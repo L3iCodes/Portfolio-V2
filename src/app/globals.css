@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* ======== Map Variables to Tailwind Utility Classes ========*/
+@theme {
+  --font-inter: var(--inter);
+  --font-bricolage: var(--bricolage);
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-neutral: var(--neutral);
+  
+  --color-base-100: var(--base-100);
+  --color-base-200: var(--base-200);
+  --color-base-300: var(--base-300);
+  --color-base-content: var(--base-content);
+  
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+}
+
+/* ======== Base Styles ========*/
+:root{
+  background-color: var(--base-100);
+  color: var(--base-content);
+
+  --primary: #1E40AF;
+  --secondary: #FBBF24;
+  --accent: #D946EF;
+  --neutral: #27272A;
+  --base-100: #121212;
+  --base-200: #1F1F1F;
+  --base-300: #2A2A2A;
+  --base-content: #E5E5E5;
+  --info: #3ABFF8;
+  --success: #36D399;
+  --warning: #FBBD23;
+  --error: #F87272;
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --primary: #1d4ed8;
+  --secondary: #f59e0b;
+  --accent: #d946ef;
+  --neutral: #f3f4f6;
+  --base-100: #ffffff;
+  --base-200: #f3f4f6;
+  --base-300: #e5e7eb;
+  --base-content: #1f2937;
+  --info: #3abff8;
+  --success: #36d399;
+  --warning: #fbbd23;
+  --error: #f87272;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  --primary: #1E40AF;
+  --secondary: #FBBF24;
+  --accent: #D946EF;
+  --neutral: #27272A;
+  --base-100: #121212;
+  --base-200: #1A1B1E;
+  --base-300: #2F2F33;
+  --base-content: #E5E5E5;
+  --info: #3ABFF8;
+  --success: #36D399;
+  --warning: #FBBD23;
+  --error: #F87272;
+}
+
+body {
+  
+  
+  font-family: var(--inter), sans-serif;
+}
+
+
+
