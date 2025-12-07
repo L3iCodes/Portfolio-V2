@@ -1,12 +1,17 @@
+'use client'
+
 import { Icon } from "@iconify/react"
 import { quickAccess } from "../lib/constants";
+import { useRouter } from "next/navigation";
 
 const QuickAccess = () => {
+    const router = useRouter();
     return (
         <div className="w-full flex items-center gap-4">
             {quickAccess.map((element, index) => (
                 <button
                     key={`${index} - ${element.icon}`} 
+                    onClick={() => element.href && window.open(element.href)}
                     className={
                         `
                         w-fit h-fit p-2 cursor-pointer text-base-content/80
@@ -26,3 +31,4 @@ const QuickAccess = () => {
 };
 
 export default QuickAccess;
+

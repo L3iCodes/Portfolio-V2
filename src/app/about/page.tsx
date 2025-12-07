@@ -13,7 +13,7 @@ export default function AboutPage() {
                     <div className="space-y-5">
                         <h1 className="text-4xl font-bold">ME!</h1>
                         <p className="text-sm text-base-content/70">
-                            Hi, I’m Jan Wilhelm Sy, a Computer Science graduate from Bicol University with a strong drive to become a full-stack developer. 
+                            Hi, I’m <span className="font-semibold text-base-content">Jan Wilhelm Sy</span>, a Computer Science graduate from Bicol University with a strong drive to become a full-stack developer. 
                             I’m passionate about web development (and artificial intelligence), 
                             and I’m actively expanding my skills in React and various React-based frameworks, along with other backend technologies.
                             <br/><br/>
@@ -36,7 +36,7 @@ export default function AboutPage() {
             </section>
 
             {/* Tech Stack */}
-            <section className="flex flex-col md:flex-row gap-30">
+            <section className="flex flex-col xl:flex-row gap-30">
                 <div className="flex gap-2 justify-center">
                     <div className=" shrink-0 w-[300px] h-[450px] bg-base-300 rounded-md">
                         Image here
@@ -70,9 +70,9 @@ export default function AboutPage() {
                     
                     <button className={
                         `
-                            ml-auto w-fit h-fit p-2 px-4 flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-sm text-base-content/80 cursor-pointer
-                            hover:bg-base-100 hover:text-base-content active:bg-base-100/20 
-                            md:ml-0
+                        ml-auto w-fit h-fit p-2 px-4 flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-sm text-base-content/80 cursor-pointer
+                        hover:bg-base-100 hover:text-base-content active:bg-base-100/20 
+                        md:ml-0
                         `
                         }
                     >

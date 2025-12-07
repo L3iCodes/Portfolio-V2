@@ -19,9 +19,9 @@ export type SocialLink = {
 };
 
 export const socials = [
-    {icon: "ri:github-fill", href: "www.github.com"},
-    {icon: "mdi:linkedin", href: "www.linkedin.com"},
-    {icon: "ic:baseline-facebook", href: "www.facebook.com"},
+    {icon: "ri:github-fill", href: "https://github.com/L3iCodes"},
+    {icon: "mdi:linkedin", href: "https://www.linkedin.com/in/jan-wilhelm-sy-8665b9379"},
+    {icon: "ic:baseline-facebook", href: "https://www.facebook.com/janwilhelm.sy/"},
 ];
 
 
@@ -69,12 +69,11 @@ type QuickAccessItems = {
 };
 
 export const quickAccess: QuickAccessItems[] = [
-    {icon: "ri:github-fill", withStyle: true, href: "www.github.com"},
-    {icon: "mdi:linkedin", withStyle: true, href: "www.linkedin.com"},
+    {icon: "ri:github-fill", withStyle: true, href: "https://github.com/L3iCodes"},
+    {icon: "mdi:linkedin", withStyle: true, href: "https://www.linkedin.com/in/jan-wilhelm-sy-8665b9379"},
     {text: "Email", withStyle: true, customStyle: "px-5!"},
     {text: "(+69) 961 365 5723", withStyle: false, customStyle: "hover:bg-base-200"},
 ];
-
 
 // EXPERIENCES ITEM(S)
 export type ExperienceItems = {

@@ -49,9 +49,9 @@ export default function Home() {
 
             <button className={
                 `
-                  p-2 px-4 ml-auto md:flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
-                  hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
-                  hidden
+                p-2 px-4 ml-auto md:flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
+                hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
+                hidden
                 `
               }
             >
@@ -61,15 +61,15 @@ export default function Home() {
             
             <button className={
                 `
-                  p-2 ml-auto md:hidden items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
-                  hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
+                p-2 ml-auto md:hidden items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
+                hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
                 `
               }
             >
               <Icon icon="bxs:right-arrow"  />
             </button>
           </div>
-          
+
           <Projects />
       </section>
     </div>

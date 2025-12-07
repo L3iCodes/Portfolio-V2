@@ -10,13 +10,13 @@ const DesktopNavbar = () => {
     const router = useRouter();
 
     return (
-        <nav className="hidden md:flex flex-col w-60 p-2">
+        <nav className="hidden md:flex flex-col w-61 p-2">
             {/* Profile */}
             <div 
                 className={
                     `
-                    flex p-2 gap-3 cursor-pointer rounded-md
-                    hover:bg-base-300
+                    flex p-2 gap-3 cursor-pointer rounded-md border border-transparent
+                    hover:bg-base-200 hover:border-base-content/20
                     `
                 }
             >
@@ -51,9 +51,10 @@ const DesktopNavbar = () => {
             <div className="mt-auto flex flex-col gap-1 ">
                 <p className="text-xs text-base-content/80">SOCIALS</p>
                 <ul className="flex gap-1">
-                    {socials.map(social => (
+                    {socials.map((social, index) => (
                         <li 
-                            key={social.href}
+                            key={`social-${index}}`}
+                            onClick={() => window.open(social.href)}
                             className={
                                 `
                                     w-fit h-fit p-1 cursor-pointer text-base-content/80
