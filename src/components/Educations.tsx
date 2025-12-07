@@ -2,7 +2,7 @@ import { EducationItems, educations } from "../lib/constants";
 
 const Educations = () => {
     return (
-        <div className="ml-5 space-y-5 md:ml-0 md:space-y-10 text-base-content/50 text-sm">
+        <div className="ml-5 space-y-5 xl:ml-0 md:space-y-10 text-base-content/50 text-sm">
             {educations.map((education, index) => (
                 <Education 
                     key={`education-${index}`}

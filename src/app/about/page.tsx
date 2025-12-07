@@ -1,17 +1,18 @@
 import Button from "@/src/components/Button";
 import Educations from "@/src/components/Educations";
 import Experiences from "@/src/components/Experiences";
+import ImageHolder from "@/src/components/ImageHolder";
 import QuickAccess from "@/src/components/QuickAccess";
 import SectionHeader from "@/src/components/SectionHeader";
 import TechStack from "@/src/components/TeckStack";
-import { Icon } from "@iconify/react";
+import { profileImage } from "@/src/lib/constants";
 
 export default function AboutPage() {
     return(
-        <div className={`min-h-full space-y-30 xl:space-y-40`}>
+        <div className={`min-h-full space-y-25 xl:space-y-40`}>
             {/* Introduction */}
-            <section className="flex flex-col md:flex-row gap-30">
-                <div className="space-y-20 md:space-y-30">
+            <section className="flex items-center flex-col xl:flex-row gap-20">
+                <div className="space-y-20">
                     <div className="space-y-5">
                         <h1 className="text-4xl font-bold">ME!</h1>
                         <p className="text-sm text-base-content/70">
@@ -28,19 +29,22 @@ export default function AboutPage() {
                 </div>
 
                 {/* Image Placeholder */}
-                <div className="hidden xl:flex gap-2">
+                <div className="hidden lg:flex gap-2">
                     <div className="w-15 h-20 bg-base-200 border border-base-content/20 rounded-md"/>
-                    <div className="shrink-0 w-[300px] h-[430px] bg-base-300 rounded-md">
-                        Image here
-                    </div>
+                    <ImageHolder 
+                        src={profileImage} 
+                        className="shrink-0 w-[300px] h-[400px]"
+                        title="Wildlife.jpg"
+                    />
                     <div className="mt-auto w-10 h-15 bg-base-100 border border-base-content/20 rounded-md"/>
                 </div>
             </section>
 
             {/* Tech Stack */}
             <section className="flex flex-col xl:flex-row gap-30">
-                <div className="flex gap-2 justify-center">
-                    <div className=" shrink-0 w-[300px] h-[450px] bg-base-300 rounded-md">
+                
+                <div className="hidden xl:flex gap-2 justify-center">
+                    <div className="shrink-0 w-[300px] bg-base-100 rounded-md">
                         Image here
                     </div>
                 </div>

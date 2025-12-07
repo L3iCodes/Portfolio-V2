@@ -5,12 +5,17 @@ import { usePathname } from "next/navigation"
 import { navigation, socials } from "../lib/constants"
 import { useRouter } from "next/navigation";
 
-const DesktopNavbar = () => {
+interface DesktopNavbarProps {
+    className?: string;
+    onNavigate?: () => void;
+}
+
+const SideNavbar = ({ className, onNavigate }: DesktopNavbarProps) => {
     const pathName = usePathname();
     const router = useRouter();
 
     return (
-        <nav className="hidden md:flex flex-col w-61 p-2">
+        <nav className={`${className} hidden md:flex flex-col w-61 p-2`}>
             {/* Profile */}
             <div 
                 className={
@@ -32,7 +37,10 @@ const DesktopNavbar = () => {
                 {navigation.map(nav => (
                     <li 
                         key={nav.href}
-                        onClick={() => router.push(nav.href)}
+                        onClick={() => {
+                            onNavigate?.();
+                            router.push(nav.href);
+                        }}
                         className={
                             `
                             flex items-center p-2 gap-2 text-xs text-base-content/80 cursor-pointer rounded-xs border border-transparent
@@ -64,7 +72,7 @@ const DesktopNavbar = () => {
                                 `
                             }
                         >
-                            <Icon icon={social.icon} width="20" height="20" />
+                            <Icon icon={social.icon} width="25" height="25" />
                         </li>
                     ))}
                 </ul>
@@ -73,4 +81,4 @@ const DesktopNavbar = () => {
     );
 };
 
-export default DesktopNavbar
+export default SideNavbar

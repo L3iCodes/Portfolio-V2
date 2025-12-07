@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const QuickAccess = () => {
     const router = useRouter();
     return (
-        <div className="w-full flex items-center gap-4">
+        <div className="w-full flex items-center gap-4 flex-wrap">
             {quickAccess.map((element, index) => (
                 <button
                     key={`${index} - ${element.icon}`} 

@@ -2,7 +2,7 @@ import { experiences, type ExperienceItems } from "../lib/constants";
 
 const Experiences = () => {
     return (
-        <div className="ml-5 md:ml-0 space-y-10">
+        <div className="ml-5 xl:ml-0 space-y-10">
             {experiences.map((experience, index) => (
                 <Experience 
                     key={`experience-${index}`}

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import DesktopNavbar from "../components/DesktopNavbar";
+import DesktopNavbar from "../components/SideNavbar";
+import MobileNavbar from "../components/MobileNavbar";
+import SideNavbar from "../components/SideNavbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,21 +30,28 @@ export default function RootLayout({
   return (
     <html data-theme="dark" lang="en">
       <body
-        className={`${inter.variable} ${bricolage.variable} 
-        antialiased h-screen flex gap-10 p-2 sm:p-5 md:p-10 relative`}
+        className={
+          `${inter.variable} ${bricolage.variable} 
+          antialiased h-screen flex flex-col gap-0 md:flex-row 
+          md:gap-5 lg:gap-10 
+          p-2 md:p-5 lg:p-10 relative
+          `
+        }
       >
-        {/* Insert Navbar */}
-        <DesktopNavbar/>
+        {/* Navbar */}
+        <SideNavbar/>
+        <MobileNavbar />
 
         {/* Main Content */}
         <main 
           className={
             `
-            w-full p-5 lg:p-10 xl:p-15
-            bg-base-200 rounded-md 
-            overflow-auto
+            w-full bg-base-200 rounded-md 
+            p-5 md:p-10 xl:p-15
+            overflow-auto relative
             `
           }>
+          
           {children}
         </main>
       </body>

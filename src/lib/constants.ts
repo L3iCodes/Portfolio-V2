@@ -1,3 +1,7 @@
+// ========= PROFILE IMAGE
+import profileSrc from '../components/img/Sample-Profile.jpg';
+export const profileImage = profileSrc;
+
 // ========= NAVIGATION ITEMS
 export type NavigationItem = {
   name: string;

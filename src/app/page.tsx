@@ -3,6 +3,8 @@ import QuickAccess from "../components/QuickAccess";
 import TechStack from "../components/TeckStack";
 import Projects from "../components/Projects";
 import Button from "../components/Button";
+import ImageHolder from "../components/ImageHolder";
+import { profileImage } from "../lib/constants";
 
 export default function HomePage() {
   return (
@@ -30,9 +32,10 @@ export default function HomePage() {
         </div>
 
         {/* Profile Image */}
-        <div className="hidden xl:flex shrink-0 w-[300px] bg-base-300 rounded-md">
-          Image here
-        </div>
+        <ImageHolder 
+          src={profileImage} 
+          className="hidden xl:flex shrink-0 w-[300px]"
+        />
       </section>
 
       {/* Featured Project Section */}
