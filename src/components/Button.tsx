@@ -1,0 +1,34 @@
+'use client'
+import { Icon } from "@iconify/react"
+
+interface ButtonProps {
+    text?: string;
+    type: 'rectangle' | 'square'
+    className?: string;
+    icon?: string;
+    onClick?: () => void;
+};
+
+const Button = ({ text, type = 'square', className, icon, onClick } : ButtonProps) => {
+    const style = {
+        "rectangle": 'py-2 px-4',
+        "square": 'p-2'
+    };
+
+    return (
+        <button 
+            onClick={() => onClick}
+            className={
+                `
+                ${className} ${style[type]} ml-auto w-fit h-fit flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-sm text-base-content/80 cursor-pointer
+                hover:bg-base-100 hover:text-base-content active:bg-base-100/20 
+                `
+            }
+        >
+            {text}
+            {icon && (<Icon icon={icon}/>)}
+        </button>
+    );
+};
+
+export default Button

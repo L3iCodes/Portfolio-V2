@@ -1,12 +1,14 @@
+import Button from "@/src/components/Button";
 import Educations from "@/src/components/Educations";
 import Experiences from "@/src/components/Experiences";
 import QuickAccess from "@/src/components/QuickAccess";
+import SectionHeader from "@/src/components/SectionHeader";
 import TechStack from "@/src/components/TeckStack";
 import { Icon } from "@iconify/react";
 
 export default function AboutPage() {
     return(
-        <div className={`min-h-full space-y-30 md:space-y-40`}>
+        <div className={`min-h-full space-y-30 xl:space-y-40`}>
             {/* Introduction */}
             <section className="flex flex-col md:flex-row gap-30">
                 <div className="space-y-20 md:space-y-30">
@@ -62,36 +64,25 @@ export default function AboutPage() {
 
             {/* Experience */}
             <section className="flex flex-col xl:flex-row gap-10 xl:gap-30">
-                <div className="flex flex-row w-full items-center md:flex-col md:items-start  shrink-0 md:w-[300px] gap-5">
-                    <div className="space-y-0">
-                        <h2 className="text-xl font-semibold font-bricolage">MY EXPERIENCE</h2>
-                        <p className="text-xs text-base-content/50">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    
-                    <button className={
-                        `
-                        ml-auto w-fit h-fit p-2 px-4 flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-sm text-base-content/80 cursor-pointer
-                        hover:bg-base-100 hover:text-base-content active:bg-base-100/20 
-                        md:ml-0
-                        `
-                        }
-                    >
-                        Resume
-                        <Icon icon="bxs:right-arrow"  />
-                    </button>
-                </div>
-
+                <SectionHeader 
+                    title="EXPERIENCE"
+                    subtitle="Applied skills and contributions in the field."
+                >
+                    <Button 
+                        text="Resume"
+                        type="rectangle"
+                        className="ml-auto xl:ml-0!"
+                        icon="bxs:right-arrow"
+                    />
+                </SectionHeader>
                 <Experiences/>
             </section>
 
             <section className="flex flex-col xl:flex-row gap-10 xl:gap-30">
-                <div className="flex flex-row w-full items-center md:flex-col md:items-start  shrink-0 md:w-[300px] gap-5">
-                    <div className="space-y-0">
-                        <h2 className="text-xl font-semibold font-bricolage">EDUCATION</h2>
-                        <p className="text-xs text-base-content/50">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                
+                <SectionHeader 
+                    title="EDUCATION"
+                    subtitle="Foundational knowledge and academic achievements."
+                />
                 <Educations/>
             </section>
         </div>

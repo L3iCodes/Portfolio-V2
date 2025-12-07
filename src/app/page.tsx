@@ -2,9 +2,9 @@ import { Icon } from "@iconify/react";
 import QuickAccess from "../components/QuickAccess";
 import TechStack from "../components/TeckStack";
 import Projects from "../components/Projects";
+import Button from "../components/Button";
 
-
-export default function Home() {
+export default function HomePage() {
   return (
     <div className={`min-h-full space-y-30`}>
       {/* Introduction Section*/}
@@ -43,35 +43,26 @@ export default function Home() {
             </div>
             
             <div className="space-y-0">
-              <h1 className="text-xl text-base-content font-bricolage font-bold ">MY PROJECTS</h1>
+              <h1 className="text-xl font-semibold font-bricolage ">MY PROJECTS</h1>
               <p className="text-sm text-base-content/50">Collection of personal projects of web applications</p>
             </div>
 
-            <button className={
-                `
-                p-2 px-4 ml-auto md:flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
-                hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
-                hidden
-                `
-              }
-            >
-              More Projects
-              <Icon icon="bxs:right-arrow"  />
-            </button>
-            
-            <button className={
-                `
-                p-2 ml-auto md:hidden items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-base-content/80 cursor-pointer
-                hover:bg-base-100 hover:text-base-content active:bg-base-100/20\
-                `
-              }
-            >
-              <Icon icon="bxs:right-arrow"  />
-            </button>
+            <Button 
+              text="More Projects"
+              type="rectangle"
+              icon="bxs:right-arrow"
+              className="hidden lg:flex"
+            />
+
+            <Button 
+              type="square"
+              icon="bxs:right-arrow"
+              className="lg:hidden"
+            />
           </div>
 
           <Projects />
       </section>
     </div>
   );
-}
+};

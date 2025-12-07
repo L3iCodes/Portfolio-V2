@@ -59,7 +59,7 @@ export const featuredStack: TechStackItems[] = [
 ];
 
 
-// QUICK ACCESS ITEMS
+// ========= QUICK ACCESS ITEMS
 type QuickAccessItems = {
     text?: string;
     icon?: string;
@@ -75,7 +75,7 @@ export const quickAccess: QuickAccessItems[] = [
     {text: "(+69) 961 365 5723", withStyle: false, customStyle: "hover:bg-base-200"},
 ];
 
-// EXPERIENCES ITEM(S)
+// ========= EXPERIENCES ITEM(S)
 export type ExperienceItems = {
     company: string;
     location: string;
@@ -101,7 +101,7 @@ export const experiences: ExperienceItems[] = [
 ];
 
 
-// EDUCATIONS ITEMS
+// ========= EDUCATIONS ITEMS
 export type EducationItems = {
     school: string;
     course: string;
