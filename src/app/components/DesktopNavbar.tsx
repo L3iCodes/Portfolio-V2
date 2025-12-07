@@ -2,18 +2,7 @@
 
 import { Icon } from "@iconify/react"
 import { usePathname } from "next/navigation"
-
-const navigation = [
-    {name: "Home", href: "/", icon: "bx:home-alt-2"},
-    {name: "Projects", href: "/projects", icon: "material-symbols:work-outline"},
-    {name: "About", href: "/about", icon: "iconamoon:profile"},
-];
-
-const socials = [
-    {icon: "ri:github-fill", href: "www.github.com"},
-    {icon: "mdi:linkedin", href: "www.linkedin.com"},
-    {icon: "ic:baseline-facebook", href: "www.facebook.com"},
-];
+import { navigation, socials } from "../lib/constants"
 
 const DesktopNavbar = () => {
     const pathName = usePathname();
@@ -24,8 +13,8 @@ const DesktopNavbar = () => {
             <div 
                 className={
                     `
-                        flex p-2 gap-3 cursor-pointer rounded-md
-                        hover:bg-base-300
+                    flex p-2 gap-3 cursor-pointer rounded-md
+                    hover:bg-base-300
                     `
                 }
             >
@@ -36,16 +25,16 @@ const DesktopNavbar = () => {
                 </div>
             </div>
 
-            {/* Navigation Buttoms */}
+            {/* Navigation Buttons */}
             <ul className="space-y-2 mt-10">
                 {navigation.map(nav => (
                     <li 
                         key={nav.href}
                         className={
                             `
-                                flex items-center p-2 gap-2 text-xs text-base-content/80 cursor-pointer rounded-xs border border-transparent
-                                ${pathName === nav.href && 'bg-base-200 border border-base-content/20! text-base-content!  '}
-                                hover:bg-base-200 hover:border-base-content/20 hover:text-base-content active:bg-base-100
+                            flex items-center p-2 gap-2 text-xs text-base-content/80 cursor-pointer rounded-xs border border-transparent
+                            ${pathName === nav.href && 'bg-base-200 border border-base-content/20! text-base-content!  '}
+                            hover:bg-base-200 hover:border-base-content/20 hover:text-base-content active:bg-base-100
                             `
                         }
                     >

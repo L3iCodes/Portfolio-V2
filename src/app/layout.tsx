@@ -35,12 +35,14 @@ export default function RootLayout({
         <DesktopNavbar/>
 
         {/* Main Content */}
-        <main className={
+        <main 
+          className={
             `
-              w-full p-5 lg:p-10 xl:p-15
-              bg-base-200 rounded-md 
-              overflow-auto
-            `}>
+            w-full p-5 lg:p-10 xl:p-15
+            bg-base-200 rounded-md 
+            overflow-auto
+            `
+          }>
           {children}
         </main>
       </body>

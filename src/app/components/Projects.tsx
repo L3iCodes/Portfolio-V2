@@ -18,6 +18,7 @@ const ProjectCard = () => {
       className={
         `
           h-[400px] max-w-[250px] p-2 flex flex-col gap-1 bg-base-200 border border-base-content/20 rounded-md cursor-pointer
+          transition-all ease-in
           hover:scale-105 hover:bg-base-100
         `
       }
