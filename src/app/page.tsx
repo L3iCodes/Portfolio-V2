@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
-import QuickAccess from "./components/QuickAccess";
-import TechStack from "./components/TeckStack";
-import Projects from "./components/Projects";
+import QuickAccess from "../components/QuickAccess";
+import TechStack from "../components/TeckStack";
+import Projects from "../components/Projects";
 
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         <div className="space-y-15">
           <div className="space-y-5">
             <h1 className="text-4xl font-bold">Hey, I'm Wilhelm!</h1>
-            <p className="text-sm text-base-content/50 font-medium">
+            <p className="text-sm text-base-content/70 font-medium">
               Fresh graduate and aspiring full-stack developer with skills in React, backend technologies, and AI. Experience includes deep learning and NLP projects developed during research and applied work.
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function Home() {
               <Icon icon="bxs:right-arrow"  />
             </button>
           </div>
-
+          
           <Projects />
       </section>
     </div>

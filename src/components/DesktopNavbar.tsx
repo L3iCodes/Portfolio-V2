@@ -3,9 +3,11 @@
 import { Icon } from "@iconify/react"
 import { usePathname } from "next/navigation"
 import { navigation, socials } from "../lib/constants"
+import { useRouter } from "next/navigation";
 
 const DesktopNavbar = () => {
     const pathName = usePathname();
+    const router = useRouter();
 
     return (
         <nav className="hidden md:flex flex-col w-60 p-2">
@@ -30,6 +32,7 @@ const DesktopNavbar = () => {
                 {navigation.map(nav => (
                     <li 
                         key={nav.href}
+                        onClick={() => router.push(nav.href)}
                         className={
                             `
                             flex items-center p-2 gap-2 text-xs text-base-content/80 cursor-pointer rounded-xs border border-transparent

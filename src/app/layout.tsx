@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import DesktopNavbar from "./components/DesktopNavbar";
+import DesktopNavbar from "../components/DesktopNavbar";
 
 const inter = Inter({
   subsets: ["latin"],

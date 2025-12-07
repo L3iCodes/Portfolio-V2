@@ -4,11 +4,12 @@ import type { TechStackItems } from "../lib/constants"
 
 interface TechStackProps {
     option?: 'all' | 'featured'
+    className?: string;
 };
 
-const TechStack = ({option = "all"}: TechStackProps) => {
+const TechStack = ({option = "all", className}: TechStackProps) => {
     return(
-        <div className='w-full grid grid-cols-3 xl:grid-cols-5 gap-5'>
+        <div className={`${className} w-full grid grid-cols-3 xl:grid-cols-5 gap-5`}>
             {option === 'all'
                 ? 
                 allStack.map(stack => (

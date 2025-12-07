@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react"
 import { quickAccess } from "../lib/constants";
 
-
 const QuickAccess = () => {
     return (
         <div className="w-full flex items-center gap-4">
