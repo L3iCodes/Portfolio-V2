@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import QuickAccess from "../components/QuickAccess";
 import TechStack from "../components/TeckStack";
 import Projects from "../components/Projects";
-import Button from "../components/Button";
+import { NavigateButton } from "../components/Button";
 import ImageHolder from "../components/ImageHolder";
 import { profileImage } from "../lib/constants";
 
@@ -50,21 +50,23 @@ export default function HomePage() {
               <p className="text-sm text-base-content/50">Collection of personal projects of web applications</p>
             </div>
 
-            <Button 
+            <NavigateButton 
               text="More Projects"
               type="rectangle"
               icon="bxs:right-arrow"
               className="hidden lg:flex"
+              href="/projects"
             />
 
-            <Button 
+            <NavigateButton 
               type="square"
               icon="bxs:right-arrow"
               className="lg:hidden"
+              href="/projects"
             />
           </div>
 
-          <Projects />
+          <Projects option="featured"/>
       </section>
     </div>
   );

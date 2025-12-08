@@ -1,5 +1,6 @@
 'use client'
 import { Icon } from "@iconify/react"
+import { useRouter } from "next/navigation";
 
 interface ButtonProps {
     text?: string;
@@ -17,7 +18,7 @@ const Button = ({ text, type = 'square', className, icon, onClick } : ButtonProp
 
     return (
         <button 
-            onClick={() => onClick}
+            onClick={onClick}
             className={
                 `
                 ${className} ${style[type]} ml-auto w-fit h-fit flex items-center gap-2 bg-base-300 rounded-md border border-base-content/20 text-sm text-base-content/80 cursor-pointer
@@ -32,3 +33,25 @@ const Button = ({ text, type = 'square', className, icon, onClick } : ButtonProp
 };
 
 export default Button
+
+interface NavigateButtonProps {
+    text?: string;
+    type: 'rectangle' | 'square';
+    className?: string;
+    icon?: string;
+    href: string;
+}
+
+export const NavigateButton = ({ text, type, icon, className, href }: NavigateButtonProps) => {
+  const router = useRouter();
+
+  return (
+    <Button
+      text={text}
+      type={type}
+      icon={icon}
+      className={className}
+      onClick={() => router.push(href)}
+    />
+  );
+}

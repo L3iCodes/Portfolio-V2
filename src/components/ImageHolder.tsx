@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import { title } from "process";
 
 interface ImageHolderProps {
     src: string | StaticImageData;
