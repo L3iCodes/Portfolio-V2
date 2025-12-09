@@ -43,15 +43,7 @@ export default function RootLayout({
         <MobileNavbar />
 
         {/* Main Content */}
-        <main 
-          className={
-            `
-            w-full bg-base-200 rounded-md 
-            p-5 md:p-10 xl:p-15
-            overflow-auto relative
-            `
-          }>
-          
+        <main className={`w-full bg-base-200 rounded-md overflow-auto relative`}>
           {children}
         </main>
       </body>

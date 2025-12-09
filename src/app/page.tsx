@@ -8,7 +8,7 @@ import { profileImage } from "../lib/constants";
 
 export default function HomePage() {
   return (
-    <div className={`min-h-full space-y-30`}>
+    <div className={`min-h-full space-y-30 m-5 md:m-10 xl:m-15`}>
       {/* Introduction Section*/}
       <section className="flex flex-col md:flex-row gap-30">
         <div className="space-y-15">

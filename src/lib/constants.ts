@@ -36,31 +36,32 @@ export type TechStackItems = {
     color?: string;
 };
 
-export const allStack: TechStackItems[] = [
-    { name: "React", icon: "akar-icons:react-fill", color: "#4A90E2" },   
-    { name: "NextJS", icon: "ri:nextjs-fill", color: "#F9A825" },     
-    { name: "Tailwind", icon: "mdi:tailwind", color: "#06B6D4" },
-    { name: "NodeJS", icon: "mdi:nodejs", color: "#68A063" },
-    { name: "Express", icon: "simple-icons:express", color: "#F9A825" },     
-    { name: "MongoDB", icon: "lineicons:mongodb", color: "#47A248" },
-    { name: "MySQL", icon: "lineicons:mongodb", color: "#00758F" },
-    { name: "Python", icon: "proicons:python", color: "#3776AB" },
-    { name: "Tensorflow", icon: "simple-icons:tensorflow", color: "#FF6F00" },
-    { name: "GitHub", icon: "meteor-icons:github", color: "#333333" },
-    { name: "VS Code", icon: "codicon:vscode", color: "#007ACC" },
-    { name: "Figma", icon: "solar:figma-bold", color: "#A948FF" },  
-];
+export const allStack: Record<string, TechStackItems> = {
+  React: { name: "React", icon: "akar-icons:react-fill", color: "#4A90E2" },
+  NextJS: { name: "NextJS", icon: "ri:nextjs-fill", color: "#F9A825" },
+  Tailwind: { name: "Tailwind", icon: "mdi:tailwind", color: "#06B6D4" },
+  NodeJS: { name: "NodeJS", icon: "mdi:nodejs", color: "#68A063" },
+  Express: { name: "Express", icon: "simple-icons:express", color: "#F9A825" },
+  MongoDB: { name: "MongoDB", icon: "lineicons:mongodb", color: "#47A248" },
+  MySQL: { name: "MySQL", icon: "lineicons:mongodb", color: "#00758F" },
+  Python: { name: "Python", icon: "proicons:python", color: "#3776AB" },
+  Tensorflow: { name: "Tensorflow", icon: "simple-icons:tensorflow", color: "#FF6F00" },
+  GitHub: { name: "GitHub", icon: "meteor-icons:github", color: "#333333" },
+  "VS Code": { name: "VS Code", icon: "codicon:vscode", color: "#007ACC" },
+  Figma: { name: "Figma", icon: "solar:figma-bold", color: "#A948FF" },
+};
 
-export const featuredStack: TechStackItems[] = [
-    { name: "React", icon: "akar-icons:react-fill", color: "#4A90E2" },
-    { name: "NextJS", icon: "ri:nextjs-fill", color: "#F9A825" },
-    { name: "NodeJS", icon: "mdi:nodejs", color: "#68A063" },
-    { name: "Express", icon: "simple-icons:express", color: "#F9A825" },
-    { name: "MongoDB", icon: "lineicons:mongodb", color: "#47A248" },
-    { name: "MySQL", icon: "lineicons:mongodb", color: "#00758F" },
-    { name: "VS Code", icon: "codicon:vscode", color: "#007ACC" },
-    { name: "Figma", icon: "solar:figma-bold", color: "#A948FF" },
-];
+
+export const featuredStack: Record<string, TechStackItems> = {
+    React: { name: "React", icon: "akar-icons:react-fill", color: "#4A90E2" },
+    NextJS: { name: "NextJS", icon: "ri:nextjs-fill", color: "#F9A825" },
+    NodeJS: { name: "NodeJS", icon: "mdi:nodejs", color: "#68A063" },
+    Express: { name: "Express", icon: "simple-icons:express", color: "#F9A825" },
+    MongoDB: { name: "MongoDB", icon: "lineicons:mongodb", color: "#47A248" },
+    MySQL: { name: "MySQL", icon: "lineicons:mongodb", color: "#00758F" },
+    "VS Code": { name: "VS Code", icon: "codicon:vscode", color: "#007ACC" },
+    "Figma": { name: "Figma", icon: "solar:figma-bold", color: "#A948FF" },
+};
 
 
 // ========= QUICK ACCESS ITEMS
@@ -153,7 +154,7 @@ export type ProjectItems = {
 
 export const sample_projects: ProjectItems[] = [
     {
-        _id: '2',
+        _id: '0',
         title: 'Verta',
         subtitle: 'A React-based Realtime Chat Application',
         coverImg: sample1,
@@ -186,7 +187,7 @@ export const sample_projects: ProjectItems[] = [
         featured: true,
     },
     {
-        _id: '3',
+        _id: '1',
         title: 'Project 3',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample2,
@@ -225,7 +226,7 @@ export const sample_projects: ProjectItems[] = [
     },
 
     {
-        _id: '4',
+        _id: '2',
         title: 'Project 4',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample1,
@@ -258,7 +259,7 @@ export const sample_projects: ProjectItems[] = [
         featured: false,
     },
     {
-        _id: '5',
+        _id: '3',
         title: 'Project 5',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample2,
@@ -297,7 +298,7 @@ export const sample_projects: ProjectItems[] = [
     },
 
     {
-        _id: '6',
+        _id: '4',
         title: 'Project 6',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         coverImg: sample1,

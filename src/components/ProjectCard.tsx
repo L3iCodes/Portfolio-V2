@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
-import { projectCoverColors, projectCoverStyles } from "../lib/styles";
+import { projectCoverColors, projectCoverStyles, shadowColors } from "../lib/styles";
+import { redirect } from "next/navigation";
 
 interface ProjectCardProps {
   _id: string;
@@ -7,11 +8,12 @@ interface ProjectCardProps {
   subtitle: string;
   coverImg?: string | StaticImageData;
   coverBg: projectCoverColors
-}
+};
 
 const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardProps) => {
   return(
     <div 
+      onClick={() => (redirect(`/projects/${_id}`))}
       className={
         `
           h-[400px] min-w-[250px] w-[250px] md:w-full p-2 flex flex-col gap-1 bg-base-200 border border-base-content/20 rounded-md cursor-pointer
@@ -26,7 +28,7 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardPro
         <div className="absolute inset-0 z-0" style={{background: projectCoverStyles[coverBg]}}
         />
         {coverImg && (
-          <div className={`absolute h-[85%] w-[85%] border border-base-content/30 inset-0 m-auto z-20 shadow-xl shadow-${coverBg}-300`}>
+          <div className={`absolute h-[85%] w-[85%] border border-base-content/30 inset-0 m-auto z-20 shadow-xl ${shadowColors[coverBg]}`}>
             <Image
               src={coverImg}
               alt="Profile"

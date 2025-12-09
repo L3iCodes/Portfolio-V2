@@ -40,9 +40,10 @@ interface NavigateButtonProps {
     className?: string;
     icon?: string;
     href: string;
+    otherSite?: boolean;
 }
 
-export const NavigateButton = ({ text, type, icon, className, href }: NavigateButtonProps) => {
+export const NavigateButton = ({ text, type, icon, className, href, otherSite = false }: NavigateButtonProps) => {
   const router = useRouter();
 
   return (
@@ -51,7 +52,7 @@ export const NavigateButton = ({ text, type, icon, className, href }: NavigateBu
       type={type}
       icon={icon}
       className={className}
-      onClick={() => router.push(href)}
+      onClick={() => otherSite ? window.open(href) : router.push(href)}
     />
   );
 }

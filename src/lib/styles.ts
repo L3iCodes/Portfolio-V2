@@ -7,3 +7,10 @@ export const projectCoverStyles = {
     'green': `radial-gradient(circle 500px at 50% 300px, rgba(16,185,129,0.35), transparent)`,
 };
 
+export const shadowColors = {
+  gray: "shadow-black-300",
+  pink: "shadow-pink-300",
+  blue: "shadow-blue-300",
+  green: "shadow-green-300",
+  purple: "shadow-purple-300",
+};

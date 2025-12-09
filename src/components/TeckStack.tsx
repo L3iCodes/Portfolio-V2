@@ -8,28 +8,18 @@ interface TechStackProps {
 };
 
 const TechStack = ({option = "all", className}: TechStackProps) => {
+    const stackToRender = option === "all" ? Object.values(allStack) : Object.values(featuredStack);
+
     return(
         <div className={`${className} w-full grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5`}>
-            {option === 'all'
-                ? 
-                allStack.map(stack => (
-                    <TechStackCard
-                        key={stack.name}
-                        name={stack.name} 
-                        icon={stack.icon} 
-                        color={stack.color}
-                    />
-                ))
-                :
-                featuredStack.map(stack => (
-                    <TechStackCard
-                        key={stack.name}
-                        name={stack.name} 
-                        icon={stack.icon} 
-                        color={stack.color}
-                    />
-                ))
-            }
+            {stackToRender.map((stack) => (
+                <TechStackCard
+                key={stack.name}
+                name={stack.name}
+                icon={stack.icon}
+                color={stack.color}
+                />
+            ))}
         </div>
     );
 };

@@ -9,7 +9,7 @@ import { profileImage } from "@/src/lib/constants";
 
 export default function AboutPage() {
     return(
-        <div className={`min-h-full space-y-25 xl:space-y-40`}>
+        <div className={`min-h-full space-y-25 xl:space-y-40 m-5 md:m-10 xl:m-15`}>
             {/* Introduction */}
             <section className="flex items-center flex-col xl:flex-row gap-20">
                 <div className="space-y-20">
@@ -28,8 +28,8 @@ export default function AboutPage() {
                     <QuickAccess />
                 </div>
 
-                {/* Image Placeholder */}
-                <div className="hidden lg:flex gap-2">
+                {/* Profile Image */}
+                <div className="flex gap-2">
                     <div className="w-15 h-20 bg-base-200 border border-base-content/20 rounded-md"/>
                     <ImageHolder 
                         src={profileImage} 
