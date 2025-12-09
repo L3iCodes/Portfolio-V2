@@ -1,6 +1,6 @@
 import { NavigateButton } from "@/src/components/Button";
 import { sample_projects } from "@/src/lib/constants"
-import { projectCoverStyles, shadowColors } from "@/src/lib/styles";
+import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/lib/styles";
 import Image from "next/image";
 
 type ProjectInfoParams = {
@@ -12,9 +12,16 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
     const project = sample_projects[parseInt(id)];
 
     return(
-        <div className={`min-h-screen flex gap-10 m-5 lg:m-10`}>
+        <div className={`min-h-screen flex gap-10 p-5 lg:p-10 relative`}>
+            <div
+                className="absolute inset-0 z-0"
+                style={{
+                    background: pageBackgroundEffects[project.coverBg],
+                }}
+            />
+            
             {/* Main Content */}
-            <div className="flex-1 space-y-5">
+            <div className="flex-1 space-y-5 z-10">
                 <div>
                     <h1 className="text-4xl font-bold font-bricolage">{project.title.toUpperCase()}</h1>
                     <p className="text-base-content/50">
@@ -24,7 +31,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                 
                 {project.coverImg && (
                     <div className="flex items-center justify-center p-5 md:p-8 lg:p-10 border border-base-content/20 rounded-xs relative" style={{background: projectCoverStyles[project.coverBg]}}> 
-                        <div className={`ring w-full h-full ${shadowColors[project.coverBg]} shadow-[0_-5px_35px_-5px_rgba(0,0,0,0.3)] relative aspect-video overflow-hidden`}>
+                        <div className={`rounded-sm w-full h-full ${shadowColors[project.coverBg]} shadow-[0_-5px_35px_-5px_rgba(0,0,0,0.3)] relative aspect-video overflow-hidden`}>
                             <Image 
                                 src={project.coverImg}
                                 alt="Profile"
@@ -105,7 +112,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
             </div>
 
             {/* Section Navigation */}
-            <div className="hidden lg:block w-40 sticky top-10 self-start">
+            <div className="hidden lg:block w-40 sticky top-10 self-start z-10">
                 <p className="text-sm font-bricolage font-semibold text-base-content/70">
                     OVERVIEW
                 </p>

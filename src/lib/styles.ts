@@ -7,6 +7,14 @@ export const projectCoverStyles = {
     'green': `radial-gradient(circle 500px at 50% 300px, rgba(16,185,129,0.35), transparent)`,
 };
 
+export const pageBackgroundEffects = {
+    gray: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%)",
+    pink: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(244, 114, 182, 0.25), transparent 70%)",
+    blue: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6, 182, 212, 0.25), transparent 70%)",
+    green: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34, 197, 94, 0.25), transparent 70%)",
+    purple: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.25), transparent 70%)",
+}
+
 export const shadowColors = {
   gray: "shadow-black-300",
   pink: "shadow-pink-300",
