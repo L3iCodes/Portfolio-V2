@@ -22,3 +22,11 @@ export const shadowColors = {
   green: "shadow-green-300",
   purple: "shadow-purple-300",
 };
+
+export const borderColors = {
+  gray: "border-black-300",
+  pink: "border-pink-300",
+  blue: "border-blue-300",
+  green: "border-green-300",
+  purple: "border-purple-300",
+};

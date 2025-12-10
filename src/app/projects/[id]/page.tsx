@@ -1,5 +1,10 @@
 import { NavigateButton } from "@/src/components/Button";
-import { sample_projects } from "@/src/lib/constants"
+import Gallery from "@/src/components/Gallery";
+import ImageHolder from "@/src/components/ImageHolder";
+import Section, { SectionNavigation } from "@/src/components/Section";
+import { TechStackCard } from "@/src/components/TeckStack";
+import { technologies } from "@/src/lib/constants";
+import { sample_projects } from "@/src/lib/sampleProject"
 import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/lib/styles";
 import Image from "next/image";
 
@@ -71,15 +76,13 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                 {/* SECTIONS */}
                 <div className="px-1 xl:px-10 mt-15">
                     {/* Overview Section */}
-                    <section className="flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20">
-                       <h1 className="shrink-0 w-18 font-semibold font-bricolage">OVERVIEW</h1>
+                    <Section name="OVERVIEW">
                         <p className="text-sm text-base-content/80 font-normal">{project.overview}</p>
-                    </section>
+                    </Section>
+
 
                     {/* Features Section */}
-                    <section className="flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20">
-                       <h1 className="shrink-0 w-18 font-semibold font-bricolage">FEATURES</h1>
-
+                    <Section name="FEATURES">
                         <ul className="w-full space-y-10">
                            {project.features.map((feature, index) => (
                             <li 
@@ -94,30 +97,41 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                             </li>
                            ))} 
                         </ul>
-                    </section>
-
+                    </Section>
+                    
+                   
                     {/* Overview Section */}
-                    <section className="flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20">
-                        <h1 className="shrink-0 w-18 font-semibold font-bricolage">STACK</h1>
-                        <p className="text-sm text-base-content/80 font-normal">{project.overview}</p>
-                    </section>
+                    <Section name="STACK">
+                        <ul className="w-full flex justify-evenly">
+                            {project.technologies.map((tech, index) => {
+                                const item = technologies[tech.toLowerCase()];
 
+                                return(
+                                    <li key={`teck-${index}`}>
+                                        <TechStackCard
+                                            name={item.name}
+                                            icon={item.icon}
+                                            color={item.color}
+                                            className={`flex-col`}
+                                        />
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </Section>
+
+                    
                     {/* Gallery */}
-                    <section className="flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20">
-                        <h1 className="shrink-0 w-18 font-semibold font-bricolage">Gallery</h1>
-                           
-                    </section>
+                    <Section name={'GALLERY'}>
+                        <Gallery images={project.gallery} colors={project.coverBg} />
+                    </Section>
                 </div>
                 
             </div>
 
             {/* Section Navigation */}
-            <div className="hidden lg:block w-40 sticky top-10 self-start z-10">
-                <p className="text-sm font-bricolage font-semibold text-base-content/70">
-                    OVERVIEW
-                </p>
-                
-            </div>
+            <SectionNavigation />
+            
         </div>
     )
 };

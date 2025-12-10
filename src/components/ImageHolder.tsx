@@ -20,6 +20,7 @@ const ImageHolder = ({ src, className, title }: ImageHolderProps) => {
             <Image
                     className="w-full h-full p-3 object-cover border border-base-content/20 rounded-xs"
                     src={src}
+                    fill
                     alt="Profile"
                 />            
             

@@ -14,10 +14,10 @@ const TechStack = ({option = "all", className}: TechStackProps) => {
         <div className={`${className} w-full grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5`}>
             {stackToRender.map((stack) => (
                 <TechStackCard
-                key={stack.name}
-                name={stack.name}
-                icon={stack.icon}
-                color={stack.color}
+                    key={stack.name}
+                    name={stack.name}
+                    icon={stack.icon}
+                    color={stack.color}
                 />
             ))}
         </div>
@@ -27,11 +27,11 @@ const TechStack = ({option = "all", className}: TechStackProps) => {
 export default TechStack;
 
 
-const TechStackCard = ({name, icon, color}: TechStackItems) => {
+export const TechStackCard = ({name, icon, color, className}: TechStackItems & { className?: string }) => {
     return(
         <div 
             className={
-                `
+                `${className}
                 flex gap-2 items-center text-sm text-base-content
                 transition-all ease-in
                 hover:scale-105
@@ -43,7 +43,7 @@ const TechStackCard = ({name, icon, color}: TechStackItems) => {
                 style={{ backgroundColor: color }}
             >
                 <Icon 
-                    icon={icon} 
+                    icon={icon || 'fluent:border-none-24-regular'} 
                     width="35" 
                     height="35" 
                 />

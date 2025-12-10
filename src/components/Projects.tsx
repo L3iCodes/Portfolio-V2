@@ -1,6 +1,6 @@
 'use client'
 
-import { ProjectItems, sample_projects } from "../lib/constants";
+import { ProjectItems, sample_projects } from "../lib/sampleProject";
 import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 
