@@ -4,6 +4,7 @@ import "./globals.css";
 import DesktopNavbar from "../components/SideNavbar";
 import MobileNavbar from "../components/MobileNavbar";
 import SideNavbar from "../components/SideNavbar";
+import { dbConnect } from "../lib/db";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  dbConnect();
   return (
     <html data-theme="dark" lang="en">
       <body

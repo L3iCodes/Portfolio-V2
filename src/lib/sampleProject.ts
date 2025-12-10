@@ -9,7 +9,6 @@ type feature = {
     desc: string;
 }
 
-
 export type ProjectItems = {
     _id: string;
     title: string;

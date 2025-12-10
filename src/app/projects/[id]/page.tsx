@@ -1,10 +1,9 @@
+import { fetchProjectbyId } from "@/src/actions/project.actions";
 import { NavigateButton } from "@/src/components/Button";
 import Gallery from "@/src/components/Gallery";
-import ImageHolder from "@/src/components/ImageHolder";
 import Section, { SectionNavigation } from "@/src/components/Section";
 import { TechStackCard } from "@/src/components/TeckStack";
 import { technologies } from "@/src/lib/constants";
-import { sample_projects } from "@/src/lib/sampleProject"
 import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/lib/styles";
 import Image from "next/image";
 
@@ -14,7 +13,7 @@ type ProjectInfoParams = {
 
 export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
     const { id } = await params;
-    const project = sample_projects[parseInt(id)];
+    const project = await fetchProjectbyId(id);
 
     return(
         <div className={`min-h-screen flex gap-10 p-5 lg:p-10 relative`}>
@@ -37,11 +36,10 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                 {project.coverImg && (
                     <div className="flex items-center justify-center p-5 md:p-8 lg:p-10 border border-base-content/20 rounded-xs relative" style={{background: projectCoverStyles[project.coverBg]}}> 
                         <div className={`rounded-sm w-full h-full ${shadowColors[project.coverBg]} shadow-[0_-5px_35px_-5px_rgba(0,0,0,0.3)] relative aspect-video overflow-hidden`}>
-                            <Image 
+                            <img 
                                 src={project.coverImg}
                                 alt="Profile"
-                                fill
-                                className={`object-cover`}
+                                className={`w-full h-full object-cover`}
                             />
                         </div>
                     </div>

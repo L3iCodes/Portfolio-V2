@@ -16,7 +16,7 @@ export const pageBackgroundEffects = {
 }
 
 export const shadowColors = {
-  gray: "shadow-black-300",
+  gray: "shadow-orange-200",
   pink: "shadow-pink-300",
   blue: "shadow-blue-300",
   green: "shadow-green-300",

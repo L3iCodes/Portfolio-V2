@@ -1,4 +1,5 @@
-import Image, { StaticImageData } from "next/image";
+'use client'
+
 import { projectCoverColors, projectCoverStyles, shadowColors } from "../lib/styles";
 import { redirect } from "next/navigation";
 
@@ -6,7 +7,7 @@ interface ProjectCardProps {
   _id: string;
   title: string;
   subtitle: string;
-  coverImg?: string | StaticImageData;
+  coverImg?: string;
   coverBg: projectCoverColors
 };
 
@@ -29,11 +30,10 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardPro
         />
         {coverImg && (
           <div className={`absolute h-[85%] w-[85%] border border-base-content/30 inset-0 m-auto z-20 shadow-xl ${shadowColors[coverBg]}`}>
-            <Image
+            <img
               src={coverImg}
               alt="Profile"
-              fill
-              className="object-cover rounded-xs"
+              className="w-full h-full object-cover"
             />
           </div>
         )}
