@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
 import { projectCoverColors } from "@/src/lib/styles";
 
-interface Feature {
+export interface Feature {
   name: string;
   desc: string;
 }
 
-interface ProjectFormData {
+export interface ProjectFormData {
     title: string;
     subtitle: string;
     colorTheme: projectCoverColors | null;

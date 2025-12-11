@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 /* ======== Map Variables to Tailwind Utility Classes ========*/
 @theme {

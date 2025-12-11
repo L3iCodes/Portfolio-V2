@@ -1,6 +1,7 @@
 import { fetchProjectbyId } from "@/src/actions/project.actions";
 import { NavigateButton } from "@/src/components/Button";
 import Gallery from "@/src/components/Gallery";
+import ProjectLink from "@/src/components/ProjectLink";
 import Section, { SectionNavigation } from "@/src/components/Section";
 import { TechStackCard } from "@/src/components/TeckStack";
 import { technologies } from "@/src/lib/constants";
@@ -44,31 +45,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                     </div>
                 )}
                 
-                <div className="w-full h-16 flex items-center gap-2 bg-base-100 border border-base-content/20 p-3 rounded-sm">
-                    <div className="flex-1">
-                        <h2 className="text-sm font-bold">DEMO & CODE</h2>
-                        <p className="text-xs text-base-content/50">View the full information here</p>
-                    </div>
-                    <div>
-                        <NavigateButton 
-                            text="GitHub"
-                            icon="ri:github-fill"
-                            href={project.github}
-                            type="rectangle"
-                            otherSite={true}
-                            className="bg-base-200! hover:bg-base-300!"
-                        />
-                    </div>
-                    <div>
-                        <NavigateButton 
-                            text={`${project.live ? 'Demo' : 'Unavailable'}`}
-                            href={project.live || ''}
-                            type="rectangle"
-                            otherSite={true}
-                            className={`${!project.live ? 'bg-base-100 pointer-events-none' : 'bg-base-200! hover:bg-base-300!'}`}
-                        />
-                    </div>
-                </div>
+                <ProjectLink github={project.github} live={project.live}/>
 
                 {/* SECTIONS */}
                 <div className="px-1 xl:px-10 mt-15">
@@ -124,31 +101,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                     </Section>
                     
                     <Section name={'LINKS'}>
-                        <div className="w-full h-16 flex items-center gap-2 bg-base-100 border border-base-content/20 p-3 rounded-sm">
-                            <div className="flex-1">
-                                <h2 className="text-sm font-bold">DEMO & CODE</h2>
-                                <p className="text-xs text-base-content/50">View the full information here</p>
-                            </div>
-                            <div>
-                                <NavigateButton 
-                                    text="GitHub"
-                                    icon="ri:github-fill"
-                                    href={project.github}
-                                    type="rectangle"
-                                    otherSite={true}
-                                    className="bg-base-200! hover:bg-base-300!"
-                                />
-                            </div>
-                            <div>
-                                <NavigateButton 
-                                    text={`${project.live ? 'Demo' : 'Unavailable'}`}
-                                    href={project.live || ''}
-                                    type="rectangle"
-                                    otherSite={true}
-                                    className={`${!project.live ? 'bg-base-100 pointer-events-none' : 'bg-base-200! hover:bg-base-300!'}`}
-                                />
-                            </div>
-                        </div>
+                        <ProjectLink github={project.github} live={project.live}/>
                     </Section>
                 </div>
             </div>
