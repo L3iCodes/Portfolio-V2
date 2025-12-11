@@ -8,8 +8,8 @@ export async function dbConnect() {
             throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
         };
 
-        const connect = await mongoose.connect(MONGODB_URI)
-        console.log(`Connected to MongoDB: ${connect.connection.host}`)
+        const connect = await mongoose.connect(MONGODB_URI);
+        console.log(`Connected to MongoDB: ${connect.connection.host}`);
     }catch(error){
         throw new Error(`Failed to connect to database: ${error}`);
     };

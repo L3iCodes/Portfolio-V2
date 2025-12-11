@@ -22,7 +22,7 @@ const Section = ({ name, children }: SectionProps) => {
 export default Section
 
 export const SectionNavigation = () => {
-    const sections = ['Overview', 'Features', 'Stack', 'Gallery'];
+    const sections = ['Overview', 'Features', 'Stack', 'Gallery', 'Links'];
 
     return (
         <div className="hidden lg:block w-40 sticky top-10 self-start">
