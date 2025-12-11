@@ -24,7 +24,7 @@ export const shadowColors = {
 };
 
 export const borderColors = {
-  gray: "border-black-300",
+  gray: "border-orange-200",
   pink: "border-pink-300",
   blue: "border-blue-300",
   green: "border-green-300",

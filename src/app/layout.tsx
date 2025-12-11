@@ -34,20 +34,13 @@ export default function RootLayout({
       <body
         className={
           `${inter.variable} ${bricolage.variable} 
-          antialiased h-screen flex flex-col gap-0 md:flex-row 
-          md:gap-5 lg:gap-10 
-          p-2 md:p-5 lg:p-10 relative
+          antialiased flex flex-col gap-0 md:flex-row 
+          md:gap-5 h-screen lg:gap-10 
+          p-2 md:p-5 lg:p-10 relative bg-base-100
           `
         }
       >
-        {/* Navbar */}
-        <SideNavbar/>
-        <MobileNavbar />
-
-        {/* Main Content */}
-        <main className={`w-full bg-base-200 rounded-md overflow-auto relative`}>
           {children}
-        </main>
       </body>
     </html>
   );

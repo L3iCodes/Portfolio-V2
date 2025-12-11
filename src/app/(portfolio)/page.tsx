@@ -1,10 +1,10 @@
 import { Icon } from "@iconify/react";
-import QuickAccess from "../components/QuickAccess";
-import TechStack from "../components/TeckStack";
-import Projects from "../components/Projects";
-import { NavigateButton } from "../components/Button";
-import ImageHolder from "../components/ImageHolder";
-import { profileImage } from "../lib/constants";
+import QuickAccess from "../../components/QuickAccess";
+import TechStack from "../../components/TeckStack";
+import Projects from "../../components/Projects";
+import { NavigateButton } from "../../components/Button";
+import ImageHolder from "../../components/ImageHolder";
+import { profileImage } from "../../lib/constants";
 
 export default function HomePage() {
   return (
