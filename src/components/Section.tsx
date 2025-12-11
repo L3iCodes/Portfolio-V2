@@ -2,16 +2,17 @@
 
 interface SectionProps {
     name: string;
+    className?: string;
     children: React.ReactNode;
 }
 
-const Section = ({ name, children }: SectionProps) => {
+const Section = ({ name, children, className }: SectionProps) => {
     const id = name.toLowerCase().replace(/\s+/g, "-");
 
     return (
         <section 
             id={id}
-            className="flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20"
+            className={`${className} flex flex-col lg:flex-row gap-5 lg:gap-20 xl:gap-30 border-t border-base-content/20 py-20`}
         >
             <h1 className="shrink-0 w-18 font-semibold font-bricolage">{name}</h1>
             { children }

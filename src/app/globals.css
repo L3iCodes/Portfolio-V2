@@ -76,5 +76,13 @@ body {
   font-family: var(--inter), sans-serif;
 }
 
+input{
+  @apply text-xs p-2 w-full border border-base-content/10 rounded-xs
+}
+
+textarea{
+  @apply text-xs p-2 w-full border border-base-content/10 rounded-xs resize-none
+}
+
 
 

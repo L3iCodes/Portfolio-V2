@@ -24,7 +24,7 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardPro
       }
     >
       {/* Cover Image */}
-      <div className="border border-base-content/20 h-[80%] rounded-xs  relative"> 
+      <div className="border border-base-content/20 h-[80%] rounded-xs relative"> 
         {/* Gradient Background */}
         <div className="absolute inset-0 z-0" style={{background: projectCoverStyles[coverBg]}}
         />
