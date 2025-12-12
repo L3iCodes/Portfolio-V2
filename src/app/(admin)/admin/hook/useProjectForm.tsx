@@ -16,7 +16,7 @@ export interface ProjectFormData {
     overview: string;
     features: Feature[];
     technologies: string[];
-    gallery?: string[];
+    gallery?: string[] | null;
     featured: boolean;
 }
 
@@ -36,6 +36,7 @@ export const useProjectForm = () => {
     });
     
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const galleryInputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -82,7 +83,6 @@ export const useProjectForm = () => {
     };
 
     const handleTechnologySelection = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(formData.technologies)
         const value = e.target.value;
 
         setFormData(prev => {
@@ -97,9 +97,30 @@ export const useProjectForm = () => {
         });
     };
 
+    const galleryImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (!files) return;
+
+        const galleryArray: string[] = [];
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                galleryArray.push(reader.result as string);
+
+                // When all files are processed, update state
+                if (galleryArray.length === files.length) {
+                    setFormData(prev => ({ ...prev, gallery: galleryArray }));
+                }
+            };
+        reader.readAsDataURL(file);
+        });
+    };
+
     return({
         formData,
         fileInputRef,
+        galleryInputRef,
         handleChange,
         handleCoverImgUpload,
         setColorTheme,
@@ -108,6 +129,7 @@ export const useProjectForm = () => {
             remove: removeFeature,
             update: handleFeatureChange
         },
-        handleTechnologySelection
+        handleTechnologySelection,
+        galleryImageUpload,
     });
 };

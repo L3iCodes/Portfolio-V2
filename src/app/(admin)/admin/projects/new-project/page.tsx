@@ -7,12 +7,14 @@ import ProjectPreview from "../../components/ProjectPreview";
 export default function NewProjectPage() {
     const { 
         formData, 
-        fileInputRef, 
+        fileInputRef,
+        galleryInputRef, 
         handleChange, 
         setColorTheme, 
         handleCoverImgUpload, 
         features, 
         handleTechnologySelection,
+        galleryImageUpload,
     } = useProjectForm();
 
     return (
@@ -22,11 +24,13 @@ export default function NewProjectPage() {
             <ProjectInfoForm 
                 formData={formData}
                 fileInputRef={fileInputRef}
+                galleryInputRef={galleryInputRef}
                 handleChange={handleChange}
                 setColorTheme={setColorTheme}
                 handleCoverImgUpload={handleCoverImgUpload}
                 features={features}
                 handleTechnologySelection={handleTechnologySelection}
+                galleryImageUpload={galleryImageUpload}
             />
 
             {/* ==== PREVIEW SIDE ==== */}

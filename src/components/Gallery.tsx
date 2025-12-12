@@ -3,11 +3,11 @@ import { useState } from "react";
 import { borderColors, projectCoverColors, shadowColors } from "../lib/styles";
 
 interface GalleryProps {
-    images?: string[];
-    colors: projectCoverColors;
+    images?: string[] ;
+    colors?: projectCoverColors | null;
 }
 
-const Gallery = ({ images, colors }: GalleryProps) => {
+const Gallery = ({ images, colors = 'gray' }: GalleryProps) => {
   const [activeImg, setActiveImg] = useState<string | null>(null);
 
   return (
@@ -18,7 +18,7 @@ const Gallery = ({ images, colors }: GalleryProps) => {
                 key={index}
                 src={img}
                 alt={`Gallery image ${index + 1}`}
-                className={`mb-5 w-full object-cover rounded-sm border ${borderColors[colors]} cursor-pointer transition-transform duration-300 hover:scale-105`}
+                className={`mb-5 w-full object-cover rounded-sm border ${colors && borderColors[colors]} cursor-pointer transition-transform duration-300 hover:scale-105`}
                 onClick={() => setActiveImg(img)}
             />
             ))}
@@ -32,7 +32,7 @@ const Gallery = ({ images, colors }: GalleryProps) => {
             <img
                 src={activeImg}
                 alt="Fullscreen"
-                className={`max-w-[90%] max-h-[90%] rounded-lg shadow-lg animate-scale-in border ${borderColors[colors]} ${shadowColors[colors]}`}
+                className={`max-w-[90%] max-h-[90%] rounded-lg shadow-lg animate-scale-in border ${colors && `${borderColors[colors]} ${shadowColors[colors]}`}`}
             />
         </div>
       )}

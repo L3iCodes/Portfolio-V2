@@ -4,6 +4,7 @@ import ProjectLink from "@/src/components/ProjectLink"
 import Section from "@/src/components/Section"
 import { TechStackCard } from "@/src/components/TeckStack"
 import { technologies } from "@/src/lib/constants"
+import Gallery from "@/src/components/Gallery"
 
 const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
   
@@ -124,6 +125,14 @@ const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
                             : <p className="text-sm opacity-30 font-normal italic">Tech Stack list details will display here</p>
                         } 
                     </ul>
+                </Section>
+
+                <Section name={'GALLERY'} className={(!formData.gallery || formData.gallery.length < 1) ? 'opacity-30' : ''}>
+                    {formData.gallery
+                        ? (<Gallery images={formData.gallery} colors={formData.colorTheme} />)
+                        : <p className="text-sm opacity-30 font-normal italic">Gallery Images will appear here</p>
+                    }
+                    
                 </Section>
             </div>
         </div>

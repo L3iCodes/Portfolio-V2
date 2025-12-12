@@ -12,7 +12,8 @@ import { useState } from "react";
 // Define what this component needs from the parent
 interface ProjectFormProps {
     formData: ProjectFormData;
-    fileInputRef: React.RefObject<HTMLInputElement | null>
+    fileInputRef: React.RefObject<HTMLInputElement | null>;
+    galleryInputRef: React.RefObject<HTMLInputElement | null>;
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     setColorTheme: (theme: projectCoverColors) => void;
     handleCoverImgUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -22,9 +23,10 @@ interface ProjectFormProps {
         update: (index: number, field: keyof Feature, value: string) => void;
     };
     handleTechnologySelection: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    galleryImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, handleCoverImgUpload, features, handleTechnologySelection }: ProjectFormProps) => {
+const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange, setColorTheme, handleCoverImgUpload, features, handleTechnologySelection, galleryImageUpload }: ProjectFormProps) => {
     const [filteredTech, setFilteredTech] = useState(technologies);
     
     const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -134,6 +136,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                 />
             </InputGroup>
             
+            {/* Featured */}
             <div>
                 <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-medium text-base-content/90">Features</label>
@@ -182,8 +185,9 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                     </div>
                 </details> 
             </div>
-
-             <div>
+            
+            {/* Tech Stack */}
+            <div>
                 <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-medium text-base-content/90">Features</label>
                     <input 
@@ -192,7 +196,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                         onChange={handleFilter}
                     />
                 </div>
-                 <div className="grid grid-cols-3 p-1 border border-base-content/10 overflow-auto gap-2">
+                 <div className="h-80 grid grid-cols-3 p-1 border border-base-content/10 overflow-auto gap-2">
                     {Object.entries(filteredTech).map(([key, value]) => (
                         <label 
                             key={key}
@@ -221,6 +225,19 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                     ))}
                  </div>
             </div>   
+
+            <div>
+                <label className="text-xs font-medium text-base-content/90 mb-2 block">Cover Image</label>
+                <input 
+                    type="file" 
+                    name="coverImg" 
+                    accept="image/*"
+                    multiple 
+                    ref={galleryInputRef}
+                    onChange={galleryImageUpload} 
+                    className="file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-base-200 file:text-base-content hover:file:bg-base-300 text-xs w-full text-base-content/60 border border-base-content/20 rounded-sm cursor-pointer"
+                />
+            </div>
         </form>
     );
 };
