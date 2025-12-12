@@ -2,6 +2,8 @@ import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/l
 import { ProjectFormData } from "../hook/useProjectForm"
 import ProjectLink from "@/src/components/ProjectLink"
 import Section from "@/src/components/Section"
+import { TechStackCard } from "@/src/components/TeckStack"
+import { technologies } from "@/src/lib/constants"
 
 const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
   
@@ -80,7 +82,7 @@ const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
 
                 {/* Overview Section */}
                 <Section name="FEATURES" className={formData.features.length < 1 ? 'opacity-30' : ''}>
-                    {formData.features 
+                    {formData.features.length > 0
                         ? (
                             <ul className="w-full space-y-10">
                                 {formData.features.map((feature, index) => (
@@ -96,8 +98,32 @@ const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
                                     </li>
                                 ))} 
                             </ul>)
-                        : 'Feature list details will display here'
+                        : <p className="text-sm opacity-30 font-normal italic">Feature list details will display here</p>
                     }
+                </Section>
+
+                <Section name="STACK" className={formData.technologies.length < 1 ? 'opacity-30' : ''}>
+                    <ul className={`w-full ${formData.technologies.length < 0 ? 'flex' : 'grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6  gap-4'}`}>
+                        {formData.technologies.length > 0 
+                            ? (
+                                formData.technologies.map((tech, index) => {
+                                const item = technologies[tech.toLowerCase()];
+
+                                    return(
+                                        <li key={`teck-${index}`}>
+                                            <TechStackCard
+                                                name={item.name}
+                                                icon={item.icon}
+                                                color={item.color}
+                                                className={`flex-col`}
+                                            />
+                                        </li>
+                                    );
+                                })
+                            )
+                            : <p className="text-sm opacity-30 font-normal italic">Tech Stack list details will display here</p>
+                        } 
+                    </ul>
                 </Section>
             </div>
         </div>

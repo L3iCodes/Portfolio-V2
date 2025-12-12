@@ -81,6 +81,22 @@ export const useProjectForm = () => {
         });
     };
 
+    const handleTechnologySelection = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(formData.technologies)
+        const value = e.target.value;
+
+        setFormData(prev => {
+            const alreadySelected = prev.technologies.includes(value);
+
+            return {
+            ...prev,
+            technologies: alreadySelected
+                ? prev.technologies.filter(t => t !== value) // remove
+                : [...prev.technologies, value]              // add
+            };
+        });
+    };
+
     return({
         formData,
         fileInputRef,
@@ -91,6 +107,7 @@ export const useProjectForm = () => {
             add: addFeature,
             remove: removeFeature,
             update: handleFeatureChange
-        }
+        },
+        handleTechnologySelection
     });
 };

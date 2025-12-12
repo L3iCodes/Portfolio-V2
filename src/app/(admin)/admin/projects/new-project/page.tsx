@@ -1,15 +1,5 @@
 'use client'
-
-import Section from "@/src/components/Section";
-import { 
-  borderColors, 
-  pageBackgroundEffects, 
-  projectCoverColors, 
-  projectCoverStyles, 
-  shadowColors 
-} from "@/src/lib/styles";
 import { useProjectForm } from "../../hook/useProjectForm";
-import ProjectLink from "@/src/components/ProjectLink";
 import ProjectInfoForm from "../../forms/ProjectInfoForm";
 import ProjectPreview from "../../components/ProjectPreview";
 
@@ -21,7 +11,8 @@ export default function NewProjectPage() {
         handleChange, 
         setColorTheme, 
         handleCoverImgUpload, 
-        features 
+        features, 
+        handleTechnologySelection,
     } = useProjectForm();
 
     return (
@@ -35,6 +26,7 @@ export default function NewProjectPage() {
                 setColorTheme={setColorTheme}
                 handleCoverImgUpload={handleCoverImgUpload}
                 features={features}
+                handleTechnologySelection={handleTechnologySelection}
             />
 
             {/* ==== PREVIEW SIDE ==== */}

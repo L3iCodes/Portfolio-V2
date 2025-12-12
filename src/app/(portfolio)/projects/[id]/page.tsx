@@ -76,7 +76,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                    
                     {/* Overview Section */}
                     <Section name="STACK">
-                        <ul className="w-full flex justify-evenly">
+                        <ul className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6  gap-4">
                             {project.technologies.map((tech, index) => {
                                 const item = technologies[tech.toLowerCase()];
 

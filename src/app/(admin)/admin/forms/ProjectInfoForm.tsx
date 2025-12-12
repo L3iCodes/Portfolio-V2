@@ -5,6 +5,9 @@ import {
 } from "@/src/lib/styles";
 // Import types from your hook
 import { ProjectFormData, Feature } from "../hook/useProjectForm";
+import { technologies } from "@/src/lib/constants";
+import { Icon } from "@iconify/react";
+import { useState } from "react";
 
 // Define what this component needs from the parent
 interface ProjectFormProps {
@@ -18,10 +21,24 @@ interface ProjectFormProps {
         remove: (index: number) => void;
         update: (index: number, field: keyof Feature, value: string) => void;
     };
+    handleTechnologySelection: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, handleCoverImgUpload, features }: ProjectFormProps) => {
-  return (
+const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, handleCoverImgUpload, features, handleTechnologySelection }: ProjectFormProps) => {
+    const [filteredTech, setFilteredTech] = useState(technologies);
+    
+    const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toLowerCase();
+
+    const filtered = Object.fromEntries(
+            Object.entries(technologies).filter(([_key, tech]) => tech.name.toLowerCase().includes(value)
+            )
+        );
+
+        setFilteredTech(filtered);
+    };
+
+    return (
         <form className="w-full lg:w-[300px] shrink-0 bg-base-100 border border-base-content/20 p-4 flex flex-col gap-5 rounded-sm h-fit">
             <h1 className="font-semibold mb-2 border-b border-base-content/10 pb-2">Project Information</h1>
             
@@ -117,11 +134,6 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                 />
             </InputGroup>
             
-            {/* <InputGroup label="Features">
-            
-            </InputGroup> */}
-            
-
             <div>
                 <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-medium text-base-content/90">Features</label>
@@ -168,8 +180,47 @@ const ProjectInfoForm = ({ formData, fileInputRef, handleChange, setColorTheme, 
                             </div>
                         ))}
                     </div>
-                </details>
+                </details> 
             </div>
+
+             <div>
+                <div className="flex justify-between items-center mb-2">
+                    <label className="text-xs font-medium text-base-content/90">Features</label>
+                    <input 
+                        placeholder="Search for technology"
+                        className="w-40! p-1!"
+                        onChange={handleFilter}
+                    />
+                </div>
+                 <div className="grid grid-cols-3 p-1 border border-base-content/10 overflow-auto gap-2">
+                    {Object.entries(filteredTech).map(([key, value]) => (
+                        <label 
+                            key={key}
+                            className={`
+                                text-[10px] flex flex-col gap-1 items-center justify-center p-2 
+                                border rounded-xs cursor-pointer
+                                ${formData.technologies.includes(key) ? 'border-blue-500' : ' border-base-content/10'}
+                            `}
+                        >
+                        <input
+                            type="checkbox"
+                            name="tech"
+                            value={key}
+                            checked={formData.technologies.includes(key)}
+                            onChange={handleTechnologySelection}
+                            className="hidden"
+                        />
+
+                        <Icon 
+                            icon={value.icon || "fluent:border-none-24-regular"} 
+                            width="35" 
+                            height="35" 
+                        />
+                        {value.name}
+                        </label>
+                    ))}
+                 </div>
+            </div>   
         </form>
     );
 };
