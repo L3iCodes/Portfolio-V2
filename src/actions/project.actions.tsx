@@ -1,5 +1,9 @@
+'use server';
+
 import { cache } from "react";
 import Project, { ProjectType } from "../models/Projects";
+import { ProjectFormData } from "../app/(admin)/admin/hook/useProjectForm";
+import { uploadToCloudinary } from "./upload";
 
 export async function fetchProject(): Promise<ProjectType[]> {
     try{
@@ -18,7 +22,6 @@ export async function fetchProject(): Promise<ProjectType[]> {
 
 export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType> => {
     try {
-        console.log("Fetching Data: ", id);
         const data = await Project.findById(id).lean();
 
         return {
@@ -31,3 +34,25 @@ export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType> =
         throw new Error("Something went wrong while fetching the project");
     };
 });
+
+
+export const addProject = async (dataForm: ProjectFormData): Promise<void> => {
+    try{
+        await Project.create({
+            title: dataForm.title,
+            subtitle: dataForm.subtitle,
+            colorTheme: dataForm.colorTheme,
+            coverImg: dataForm.coverImg,
+            github: dataForm.github,
+            link: dataForm.link,
+            overview: dataForm.overview,
+            features: dataForm.features,
+            technologies: dataForm.technologies,
+            gallery: dataForm.gallery,
+            featured: dataForm.featured,
+        })
+    } catch (error) {
+        console.error(error);
+        throw new Error("Something went wrong while adding project");
+    }
+};

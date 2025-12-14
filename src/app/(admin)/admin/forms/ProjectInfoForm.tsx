@@ -1,3 +1,5 @@
+'use client';
+
 import { 
   borderColors, 
   projectCoverStyles, 
@@ -8,6 +10,9 @@ import { ProjectFormData, Feature } from "../hook/useProjectForm";
 import { technologies } from "@/src/lib/constants";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import { addProject } from "@/src/actions/project.actions";
+import { uploadToCloudinary } from "@/src/actions/upload";
+import { useRouter } from 'next/navigation';
 
 // Define what this component needs from the parent
 interface ProjectFormProps {
@@ -24,10 +29,24 @@ interface ProjectFormProps {
     };
     handleTechnologySelection: (e: React.ChangeEvent<HTMLInputElement>) => void;
     galleryImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleFeatureCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange, setColorTheme, handleCoverImgUpload, features, handleTechnologySelection, galleryImageUpload }: ProjectFormProps) => {
+const ProjectInfoForm = ({ 
+    formData, 
+    fileInputRef, 
+    galleryInputRef, 
+    handleChange, 
+    setColorTheme, 
+    handleCoverImgUpload, 
+    features, 
+    handleTechnologySelection, 
+    galleryImageUpload,
+    handleFeatureCheck 
+}: ProjectFormProps) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [filteredTech, setFilteredTech] = useState(technologies);
+     const router = useRouter();
     
     const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
@@ -40,8 +59,45 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
         setFilteredTech(filtered);
     };
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try{
+            // Upload cover image
+            let coverUrl = '';
+            if (formData.coverImg) {
+                const coverResult = await uploadToCloudinary(formData.coverImg);
+                coverUrl = coverResult?.secure_url || '';
+            }
+
+            // Upload gallery images
+            let galleryUrls: string[] = [];
+            if (formData.gallery && formData.gallery.length > 0) {
+                const galleryResults = await Promise.all(
+                    formData.gallery.map(img => uploadToCloudinary(img))
+                );
+                galleryUrls = galleryResults.map(r => r?.secure_url || '');
+            }
+
+            // submit project with URLs instead of raw files
+            await addProject({
+                ...formData,
+                coverImg: coverUrl,
+                gallery: galleryUrls,
+            });
+
+            router.push('/admin/projects')
+        }catch (error){
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
+        
+    };
+
     return (
-        <form className="w-full lg:w-[300px] shrink-0 bg-base-100 border border-base-content/20 p-4 flex flex-col gap-5 rounded-sm h-fit">
+        <form onSubmit={handleSubmit} className="w-full lg:w-[300px] shrink-0 bg-base-100 border border-base-content/20 p-4 flex flex-col gap-5 rounded-sm h-fit">
             <h1 className="font-semibold mb-2 border-b border-base-content/10 pb-2">Project Information</h1>
             
             <InputGroup label="Title">
@@ -52,6 +108,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                 onChange={handleChange}
                 placeholder="Project Name"
                 value={formData.title}
+                required={true}
             />
             </InputGroup>
 
@@ -63,6 +120,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                 onChange={handleChange}
                 placeholder="Short tagline"
                 value={formData.subtitle}
+                required={true}
             />
             </InputGroup>
 
@@ -112,6 +170,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                     onChange={handleChange}
                     placeholder="https://github.com/..."
                     value={formData.github}
+                    required={true}
                 />
             </InputGroup>
 
@@ -133,6 +192,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                     onChange={handleChange}
                     placeholder="Write a brief overview..."
                     value={formData.overview}
+                    required={true}
                 />
             </InputGroup>
             
@@ -226,6 +286,7 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                  </div>
             </div>   
 
+            {/* Gallery Upload */}
             <div>
                 <label className="text-xs font-medium text-base-content/90 mb-2 block">Cover Image</label>
                 <input 
@@ -238,6 +299,26 @@ const ProjectInfoForm = ({ formData, fileInputRef, galleryInputRef, handleChange
                     className="file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-base-200 file:text-base-content hover:file:bg-base-300 text-xs w-full text-base-content/60 border border-base-content/20 rounded-sm cursor-pointer"
                 />
             </div>
+
+            {/* Featured Checkbox */}
+            <div className="w-full flex items-center">
+                <label className="text-xs font-medium text-base-content/90">Featured?</label>
+                <input 
+                    type="checkbox" 
+                    name="featuredCheckBox" 
+                    checked={formData.featured}                    
+                    onChange={handleFeatureCheck} 
+                    className="h-4"
+                /> 
+            </div>
+            
+            <button 
+                type="submit"
+                className="px-1 py-2 text-sm border border-base-content/20 bg-base-300 hover:bg-base-100 disabled:opacity-90 disabled:bg-base-300"
+                disabled={isSubmitting}
+            >
+                {isSubmitting ? 'Uploading to DB' : 'Submit'}
+            </button>
         </form>
     );
 };

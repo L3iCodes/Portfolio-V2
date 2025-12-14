@@ -15,6 +15,7 @@ export default function NewProjectPage() {
         features, 
         handleTechnologySelection,
         galleryImageUpload,
+        handleFeatureCheck,
     } = useProjectForm();
 
     return (
@@ -31,6 +32,7 @@ export default function NewProjectPage() {
                 features={features}
                 handleTechnologySelection={handleTechnologySelection}
                 galleryImageUpload={galleryImageUpload}
+                handleFeatureCheck={handleFeatureCheck}
             />
 
             {/* ==== PREVIEW SIDE ==== */}

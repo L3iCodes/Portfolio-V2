@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { projectCoverColors } from "@/src/lib/styles";
+import { featuredStack } from "@/src/lib/constants";
 
 export interface Feature {
   name: string;
@@ -117,6 +118,13 @@ export const useProjectForm = () => {
         });
     };
 
+    const handleFeatureCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData(prev => ({
+            ...prev,
+            featured: e.target.checked
+        }));
+    };
+
     return({
         formData,
         fileInputRef,
@@ -131,5 +139,6 @@ export const useProjectForm = () => {
         },
         handleTechnologySelection,
         galleryImageUpload,
+        handleFeatureCheck,
     });
 };
