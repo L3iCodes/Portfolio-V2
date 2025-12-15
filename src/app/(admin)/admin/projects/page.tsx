@@ -22,7 +22,7 @@ export default function AdminProjectPage(){
             </div>
             
 
-            <Projects option="all" />
+            <Projects option="all" href="/admin/projects/edit-project"/>
         </>
     );
 };

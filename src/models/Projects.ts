@@ -6,12 +6,12 @@ export type ProjectType = {
     title: string;
     subtitle: string;
     coverImg?: string;
-    coverBg: projectCoverColors
+    colorTheme: projectCoverColors
     overview: string;
     features: {name:string; desc:string}[];
     technologies: string[];
     github: string;
-    live?:string;
+    link?:string;
     gallery?: string[];
     featured: boolean;
 };
@@ -26,10 +26,10 @@ const ProjectSchema: Schema = new mongoose.Schema({
     subtitle: { type:String, required:true },
 
     coverImg: { type:String, required:true },
-    coverBg: { type:String, enum: ['gray', 'blue', 'purple', 'green'], default:'blue'},
+    colorTheme: { type:String, enum: ['gray', 'blue', 'purple', 'green'], default:'gray'},
 
     github: { type:String, required:true },
-    live: { type:String },
+    link: { type:String },
 
     overview: { type:String, required:true },
     features: { type:[FeatureSchema], default: [] },

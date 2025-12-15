@@ -2,10 +2,11 @@ import ProjectCard from "./ProjectCard";
 import { fetchProject } from "../actions/project.actions";
 
 interface ProjectsProps {
-  option: 'featured' | 'all'
+  option: 'featured' | 'all';
+  href?: string;
 }
 
-const Projects = async ({ option = 'all' }: ProjectsProps) => {
+const Projects = async ({ option = 'all', href }: ProjectsProps) => {
   const projects = await fetchProject();
   const filteredProjects = option === 'featured' ? projects.filter(project => project.featured) : projects;
 
@@ -18,7 +19,8 @@ const Projects = async ({ option = 'all' }: ProjectsProps) => {
             title={project.title}
             subtitle={project.subtitle}
             coverImg={project.coverImg}
-            coverBg={project.coverBg}
+            colorTheme={project.colorTheme}
+            href={href}
         />
       ))}
     </div>

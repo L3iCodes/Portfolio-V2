@@ -33,6 +33,8 @@ export default function NewProjectPage() {
                 handleTechnologySelection={handleTechnologySelection}
                 galleryImageUpload={galleryImageUpload}
                 handleFeatureCheck={handleFeatureCheck}
+
+                mode="add"
             />
 
             {/* ==== PREVIEW SIDE ==== */}

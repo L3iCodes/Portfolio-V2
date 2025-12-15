@@ -11,9 +11,9 @@ export interface ProjectFormData {
     title: string;
     subtitle: string;
     colorTheme: projectCoverColors | null;
-    coverImg: string | ArrayBuffer | null;
+    coverImg?: string | ArrayBuffer | File | null;
     github: string;
-    link?: string;
+    link: string;
     overview: string;
     features: Feature[];
     technologies: string[];
@@ -42,6 +42,8 @@ export const useProjectForm = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+
+        console.log(formData)
     };
 
     const setColorTheme = (theme: projectCoverColors) => {
@@ -54,7 +56,7 @@ export const useProjectForm = () => {
 
         const reader = new FileReader();
         reader.onload = () => {
-            setFormData(prev => ({ ...prev, coverImg: reader.result }));
+            setFormData(prev => ({ ...prev, coverImg: reader.result as string }));
         };
         reader.readAsDataURL(file);
     };
@@ -127,6 +129,7 @@ export const useProjectForm = () => {
 
     return({
         formData,
+        setFormData,
         fileInputRef,
         galleryInputRef,
         handleChange,

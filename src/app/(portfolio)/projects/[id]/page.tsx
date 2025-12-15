@@ -20,7 +20,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
             <div
                 className="absolute inset-0 z-0"
                 style={{
-                    background: pageBackgroundEffects[project.coverBg],
+                    background: pageBackgroundEffects[project.colorTheme],
                 }}
             />
             
@@ -34,8 +34,8 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                 </div>  
                 
                 {project.coverImg && (
-                    <div className="flex items-center justify-center p-5 md:p-8 lg:p-10 border border-base-content/20 rounded-xs relative" style={{background: projectCoverStyles[project.coverBg]}}> 
-                        <div className={`rounded-sm w-full h-full ${shadowColors[project.coverBg]} shadow-[0_-5px_35px_-5px_rgba(0,0,0,0.3)] relative aspect-video overflow-hidden`}>
+                    <div className="flex items-center justify-center p-5 md:p-8 lg:p-10 border border-base-content/20 rounded-xs relative" style={{background: projectCoverStyles[project.colorTheme]}}> 
+                        <div className={`rounded-sm w-full h-full ${shadowColors[project.colorTheme]} shadow-[0_-5px_35px_-5px_rgba(0,0,0,0.3)] relative aspect-video overflow-hidden`}>
                             <img 
                                 src={project.coverImg}
                                 alt="Profile"
@@ -45,7 +45,7 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                     </div>
                 )}
                 
-                <ProjectLink github={project.github} live={project.live}/>
+                <ProjectLink github={project.github} link={project.link}/>
 
                 {/* SECTIONS */}
                 <div className="px-1 xl:px-10 mt-15">
@@ -97,11 +97,11 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                     
                     {/* Gallery */}
                     <Section name={'GALLERY'}>
-                        <Gallery images={project.gallery} colors={project.coverBg} />
+                        <Gallery images={project.gallery} colors={project.colorTheme} />
                     </Section>
                     
                     <Section name={'LINKS'}>
-                        <ProjectLink github={project.github} live={project.live}/>
+                        <ProjectLink github={project.github} link={project.link}/>
                     </Section>
                 </div>
             </div>

@@ -3,7 +3,6 @@
 import { cache } from "react";
 import Project, { ProjectType } from "../models/Projects";
 import { ProjectFormData } from "../app/(admin)/admin/hook/useProjectForm";
-import { uploadToCloudinary } from "./upload";
 
 export async function fetchProject(): Promise<ProjectType[]> {
     try{
@@ -23,11 +22,7 @@ export async function fetchProject(): Promise<ProjectType[]> {
 export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType> => {
     try {
         const data = await Project.findById(id).lean();
-
-        return {
-            ...data,
-            _id: data._id.toString(), // serialize ObjectId
-        } as ProjectType;
+        return JSON.parse(JSON.stringify(data));
 
     } catch (error) {
         console.error(error);
@@ -54,5 +49,46 @@ export const addProject = async (dataForm: ProjectFormData): Promise<void> => {
     } catch (error) {
         console.error(error);
         throw new Error("Something went wrong while adding project");
+    }
+};
+
+export const editProject = async (id:string, dataForm:ProjectFormData): Promise<void> => {
+    console.log("UPDATING ", dataForm)
+
+    try{
+        const data =  await Project.findByIdAndUpdate(
+            id,
+            {
+                $set: {
+                    title: dataForm.title,
+                    subtitle: dataForm.subtitle,
+                    colorTheme: dataForm.colorTheme,
+                    coverImg: dataForm.coverImg,
+                    github: dataForm.github,
+                    link: dataForm.link,
+                    overview: dataForm.overview,
+                    features: dataForm.features,
+                    technologies: dataForm.technologies,
+                    gallery: dataForm.gallery,
+                    featured: dataForm.featured,
+                }
+            }
+        );
+
+        console.log('UPDATE COMPLETE', data)
+
+    } catch (error) {
+        console.error(error);
+        throw new Error("Something went wrong while editing project");
+    }
+};
+
+export const deleteProject = async (id:string): Promise<void> => {
+    try{
+        await Project.findByIdAndDelete(id);
+
+    } catch (error) {
+        console.error(error);
+        throw new Error("Something went wrong while deleting project");
     }
 };

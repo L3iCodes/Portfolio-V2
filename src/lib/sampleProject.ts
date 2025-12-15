@@ -14,7 +14,7 @@ export type ProjectItems = {
     title: string;
     subtitle: string;
     coverImg?: string | StaticImageData;
-    coverBg: projectCoverColors
+    colorTheme: projectCoverColors
     overview: string;
     features: feature[];
     technologies: string[];
@@ -30,7 +30,7 @@ export const sample_projects: ProjectItems[] = [
         title: 'Verta',
         subtitle: 'A React-based Realtime Chat Application',
         coverImg: sample1,
-        coverBg: 'purple',
+        colorTheme: 'purple',
         overview: 'Verta is designed as a simple messaging application where users can sign up, log in, customize their profile, and chat in real time. The project serves as a playground for learning full-stack development, experimenting with UI/UX design (utilizing Daisy UI), and practicing real-time features with WebSockets.io.',
         features: [
             {
@@ -63,7 +63,7 @@ export const sample_projects: ProjectItems[] = [
         title: 'Project 3',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample2,
-        coverBg: 'blue',
+        colorTheme: 'blue',
         overview: 'Strive is a powerful and intuitive productivity and Kanban application designed to help individuals and teams organize tasks, manage projects, and achieve goals efficiently. Built with React for a dynamic front-end and Node.js for a robust backend, Strive supports real-time collaboration to keep everyone on the same page.',
         features: [
             {
@@ -111,7 +111,7 @@ export const sample_projects: ProjectItems[] = [
         title: 'Project 4',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample1,
-        coverBg: 'purple',
+        colorTheme: 'purple',
         overview: 'Verta is designed as a simple messaging application where users can sign up, log in, customize their profile, and chat in real time. The project serves as a playground for learning full-stack development, experimenting with UI/UX design (utilizing Daisy UI), and practicing real-time features with WebSockets.io.',
         features: [
             {
@@ -144,7 +144,7 @@ export const sample_projects: ProjectItems[] = [
         title: 'Project 5',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         coverImg: sample2,
-        coverBg: 'green',
+        colorTheme: 'green',
         overview: 'Strive is a powerful and intuitive productivity and Kanban application designed to help individuals and teams organize tasks, manage projects, and achieve goals efficiently. Built with React for a dynamic front-end and Node.js for a robust backend, Strive supports real-time collaboration to keep everyone on the same page.',
         features: [
             {
@@ -192,7 +192,7 @@ export const sample_projects: ProjectItems[] = [
         title: 'Project 6',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         coverImg: sample1,
-        coverBg: 'blue',
+        colorTheme: 'blue',
         overview: 'Verta is designed as a simple messaging application where users can sign up, log in, customize their profile, and chat in real time. The project serves as a playground for learning full-stack development, experimenting with UI/UX design (utilizing Daisy UI), and practicing real-time features with WebSockets.io.',
         features: [
             {

@@ -66,7 +66,7 @@ export default function HomePage() {
             />
           </div>
 
-          <Projects option="featured"/>
+          <Projects option="featured" href="/projects"/>
       </section>
     </div>
   );

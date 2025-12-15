@@ -10,7 +10,7 @@ export default function ProjectsPage() {
                 </p>
             </div>
 
-            <Projects option="all"/>
+            <Projects option="all" href="/projects"/>
         </div>
     );
 };

@@ -8,13 +8,14 @@ interface ProjectCardProps {
   title: string;
   subtitle: string;
   coverImg?: string;
-  coverBg: projectCoverColors
+  colorTheme: projectCoverColors;
+  href?: string;
 };
 
-const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardProps) => {
+const ProjectCard = ({ _id, title, subtitle, coverImg, colorTheme, href }: ProjectCardProps) => {
   return(
     <div 
-      onClick={() => (redirect(`/projects/${_id}`))}
+      onClick={() => (redirect(`${href}/${_id}`))}
       className={
         `
           h-[400px] min-w-[250px] w-[250px] md:w-full p-2 flex flex-col gap-1 bg-base-200 border border-base-content/20 rounded-md cursor-pointer
@@ -26,10 +27,10 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, coverBg }: ProjectCardPro
       {/* Cover Image */}
       <div className="border border-base-content/20 h-[80%] rounded-xs relative"> 
         {/* Gradient Background */}
-        <div className="absolute inset-0 z-0" style={{background: projectCoverStyles[coverBg]}}
+        <div className="absolute inset-0 z-0" style={{background: projectCoverStyles[colorTheme]}}
         />
         {coverImg && (
-          <div className={`absolute h-[85%] w-[85%] border border-base-content/30 inset-0 m-auto z-20 shadow-xl ${shadowColors[coverBg]}`}>
+          <div className={`absolute h-[85%] w-[85%] border border-base-content/30 inset-0 m-auto z-20 shadow-xl ${shadowColors[colorTheme]}`}>
             <img
               src={coverImg}
               alt="Profile"

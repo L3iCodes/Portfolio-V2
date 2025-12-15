@@ -5,12 +5,11 @@ import {
   projectCoverStyles, 
   projectCoverColors 
 } from "@/src/lib/styles";
-// Import types from your hook
 import { ProjectFormData, Feature } from "../hook/useProjectForm";
 import { technologies } from "@/src/lib/constants";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
-import { addProject } from "@/src/actions/project.actions";
+import { addProject, deleteProject, editProject } from "@/src/actions/project.actions";
 import { uploadToCloudinary } from "@/src/actions/upload";
 import { useRouter } from 'next/navigation';
 
@@ -30,6 +29,10 @@ interface ProjectFormProps {
     handleTechnologySelection: (e: React.ChangeEvent<HTMLInputElement>) => void;
     galleryImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleFeatureCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    
+    mode: 'add' | 'edit';
+    projectId?: string;
+    data?: ProjectFormData;
 }
 
 const ProjectInfoForm = ({ 
@@ -42,12 +45,16 @@ const ProjectInfoForm = ({
     features, 
     handleTechnologySelection, 
     galleryImageUpload,
-    handleFeatureCheck 
+    handleFeatureCheck, 
+
+    mode,
+    projectId,
+    data
 }: ProjectFormProps) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [filteredTech, setFilteredTech] = useState(technologies);
-     const router = useRouter();
-    
+    const router = useRouter();
+
     const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
 
@@ -65,28 +72,35 @@ const ProjectInfoForm = ({
 
         try{
             // Upload cover image
-            let coverUrl = '';
-            if (formData.coverImg) {
+            let coverUrl = formData.coverImg;
+
+            // Only upload if it changed
+            if (formData.coverImg !== data?.coverImg) {
                 const coverResult = await uploadToCloudinary(formData.coverImg);
                 coverUrl = coverResult?.secure_url || '';
             }
 
             // Upload gallery images
-            let galleryUrls: string[] = [];
-            if (formData.gallery && formData.gallery.length > 0) {
+            let galleryUrls: string[] = formData.gallery || [];
+            if (formData.gallery && formData.gallery.length > 0 && (formData.gallery !== data?.gallery)) {
                 const galleryResults = await Promise.all(
                     formData.gallery.map(img => uploadToCloudinary(img))
                 );
                 galleryUrls = galleryResults.map(r => r?.secure_url || '');
             }
 
-            // submit project with URLs instead of raw files
-            await addProject({
+            const payload = {
                 ...formData,
                 coverImg: coverUrl,
                 gallery: galleryUrls,
-            });
+            };
 
+            if (mode === 'add') {
+                await addProject(payload);
+            } else {
+                await editProject(projectId!, payload);
+            }
+            
             router.push('/admin/projects')
         }catch (error){
             console.error(error);
@@ -94,6 +108,19 @@ const ProjectInfoForm = ({
             setIsSubmitting(false);
         }
         
+    };
+
+    const handleDelete = async () => {
+        setIsSubmitting(true);
+
+        try{
+            if(projectId) await deleteProject(projectId);
+            router.push('/admin/projects')
+        }catch (error){
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -180,8 +207,9 @@ const ProjectInfoForm = ({
                     name="link" 
                     className="input-base" 
                     onChange={handleChange}
-                    placeholder="https://..."
+                    placeholder="https://link.com/.."
                     value={formData.link}
+                    required={true}
                 />
             </InputGroup>
 
@@ -256,7 +284,7 @@ const ProjectInfoForm = ({
                         onChange={handleFilter}
                     />
                 </div>
-                 <div className="h-80 grid grid-cols-3 p-1 border border-base-content/10 overflow-auto gap-2">
+                <div className="h-80 grid grid-cols-3 p-1 auto-rows-min border border-base-content/10 overflow-auto gap-2">
                     {Object.entries(filteredTech).map(([key, value]) => (
                         <label 
                             key={key}
@@ -283,12 +311,12 @@ const ProjectInfoForm = ({
                         {value.name}
                         </label>
                     ))}
-                 </div>
+                </div>
             </div>   
 
             {/* Gallery Upload */}
             <div>
-                <label className="text-xs font-medium text-base-content/90 mb-2 block">Cover Image</label>
+                <label className="text-xs font-medium text-base-content/90 mb-2 block">Gallery</label>
                 <input 
                     type="file" 
                     name="coverImg" 
@@ -312,13 +340,34 @@ const ProjectInfoForm = ({
                 /> 
             </div>
             
-            <button 
-                type="submit"
-                className="px-1 py-2 text-sm border border-base-content/20 bg-base-300 hover:bg-base-100 disabled:opacity-90 disabled:bg-base-300"
-                disabled={isSubmitting}
-            >
-                {isSubmitting ? 'Uploading to DB' : 'Submit'}
-            </button>
+            <div className="w-full flex gap-2">
+                {mode === 'edit' &&  (
+                    <button 
+                    type="button"
+                    className="ml-auto px-2 py-2 text-sm border border-base-content/20 bg-amber-950 hover:bg-amber-900 disabled:opacity-90 disabled:bg-base-300 cursor-pointer"
+                    disabled={isSubmitting}
+                    onClick={() => handleDelete()}
+                >
+                    {isSubmitting 
+                        ? "Deleting"
+                        : "Delete"
+                    }
+                </button>
+                )}
+                
+                <button 
+                    type="submit"
+                    className="px-3 py-2 text-sm border border-base-content/20 bg-base-300 hover:bg-base-100 disabled:opacity-90 disabled:bg-base-300 cursor-pointer"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting 
+                        ? mode === 'edit' ? 'Updating Database' : 'Uploading to Database'
+                        : mode === 'edit' ? 'Edit Project' : 'Add New Project'}
+                </button>
+
+                
+            </div>
+            
         </form>
     );
 };

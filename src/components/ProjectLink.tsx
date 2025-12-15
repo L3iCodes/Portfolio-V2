@@ -1,8 +1,9 @@
 import { ProjectItems } from "../lib/sampleProject"
+import { ProjectType } from "../models/Projects"
 import { NavigateButton } from "./Button"
 
 
-const ProjectLink = ({ github, live }: Pick<ProjectItems, "github" | "live">) => {
+const ProjectLink = ({ github, link }: Pick<ProjectType, "github" | "link">) => {
   return (
     <div className="w-full h-16 flex items-center gap-2 bg-base-100 border border-base-content/20 p-3 rounded-sm">
         <div className="flex-1">
@@ -20,13 +21,14 @@ const ProjectLink = ({ github, live }: Pick<ProjectItems, "github" | "live">) =>
             />
         </div>
         <div>
-            <NavigateButton 
-                text={`${live ? 'Demo' : 'Unavailable'}`}
-                href={live || ''}
+            <NavigateButton
+                text={`${link ? 'Demo' : 'Unavailable'}`}
+                href={link || ''}
                 type="rectangle"
-                otherSite={true}
-                className={`${!live ? 'bg-base-100 pointer-events-none' : 'bg-base-200! hover:bg-base-300!'}`}
+                otherSite={true} // OPEN IN NEW TAB
+                className={`${!link ? 'bg-base-100 pointer-events-none' : 'bg-base-200! hover:bg-base-300!'}`}
             />
+
         </div>
     </div>
   )
