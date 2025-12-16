@@ -60,7 +60,7 @@ const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
 
             {/* Links */}
             {(formData.github || formData.link) ? (
-                <ProjectLink github={formData.github} live={formData.link} />
+                <ProjectLink github={formData.github} link={formData.link} />
             ) : (
                 // Link Placeholder
                 <div className="w-full h-16 flex items-center justify-center border border-dashed border-base-content/20 rounded-sm text-base-content/30 text-xs">

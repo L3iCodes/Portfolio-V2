@@ -53,8 +53,6 @@ export const addProject = async (dataForm: ProjectFormData): Promise<void> => {
 };
 
 export const editProject = async (id:string, dataForm:ProjectFormData): Promise<void> => {
-    console.log("UPDATING ", dataForm)
-
     try{
         const data =  await Project.findByIdAndUpdate(
             id,
@@ -74,8 +72,6 @@ export const editProject = async (id:string, dataForm:ProjectFormData): Promise<
                 }
             }
         );
-
-        console.log('UPDATE COMPLETE', data)
 
     } catch (error) {
         console.error(error);

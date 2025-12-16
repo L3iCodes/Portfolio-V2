@@ -128,27 +128,27 @@ const ProjectInfoForm = ({
             <h1 className="font-semibold mb-2 border-b border-base-content/10 pb-2">Project Information</h1>
             
             <InputGroup label="Title">
-            <input 
-                type="text" 
-                name="title" 
-                className="input-base" 
-                onChange={handleChange}
-                placeholder="Project Name"
-                value={formData.title}
-                required={true}
-            />
+                <input 
+                    type="text" 
+                    name="title" 
+                    className="input-base" 
+                    onChange={handleChange}
+                    placeholder="Project Name"
+                    value={formData.title}
+                    required={true}
+                />
             </InputGroup>
 
             <InputGroup label="Subtitle">
-            <input 
-                type="text" 
-                name="subtitle" 
-                className="input-base" 
-                onChange={handleChange}
-                placeholder="Short tagline"
-                value={formData.subtitle}
-                required={true}
-            />
+                <input 
+                    type="text" 
+                    name="subtitle" 
+                    className="input-base" 
+                    onChange={handleChange}
+                    placeholder="Short tagline"
+                    value={formData.subtitle}
+                    required={true}
+                />
             </InputGroup>
 
             {/* Color Theme */}

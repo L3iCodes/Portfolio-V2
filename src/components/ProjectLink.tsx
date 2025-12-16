@@ -1,4 +1,3 @@
-import { ProjectItems } from "../lib/sampleProject"
 import { ProjectType } from "../models/Projects"
 import { NavigateButton } from "./Button"
 
