@@ -6,12 +6,13 @@ import {
   projectCoverColors 
 } from "@/src/lib/styles";
 import { ProjectFormData, Feature } from "../hook/useProjectForm";
-import { technologies } from "@/src/lib/constants";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addProject, deleteProject, editProject } from "@/src/actions/project.actions";
 import { uploadToCloudinary } from "@/src/actions/upload";
 import { useRouter } from 'next/navigation';
+import { fetchTechnologies } from "@/src/actions/tech.actions";
+import { TechStackItems } from "@/src/lib/constants";
 
 // Define what this component needs from the parent
 interface ProjectFormProps {
@@ -52,16 +53,24 @@ const ProjectInfoForm = ({
     data
 }: ProjectFormProps) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [filteredTech, setFilteredTech] = useState(technologies);
+    const [filteredTech, setFilteredTech] = useState<Record<string, TechStackItems>>({});
     const router = useRouter();
 
-    const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toLowerCase();
+    useEffect(() => {
+        const getTechnologies = async () => {
+            const technologies = await fetchTechnologies();
+            setFilteredTech(technologies);
+        };
+        getTechnologies();
+    }, []);
 
-    const filtered = Object.fromEntries(
-            Object.entries(technologies).filter(([_key, tech]) => tech.name.toLowerCase().includes(value)
-            )
-        );
+    const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.toLowerCase();
+
+        const filtered = Object.fromEntries(
+                Object.entries(filteredTech).filter(([_key, tech]) => tech.name.toLowerCase().includes(value)
+                )
+            );
 
         setFilteredTech(filtered);
     };
@@ -107,7 +116,6 @@ const ProjectInfoForm = ({
         } finally {
             setIsSubmitting(false);
         }
-        
     };
 
     const handleDelete = async () => {

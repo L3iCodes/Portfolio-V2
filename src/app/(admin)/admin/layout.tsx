@@ -28,7 +28,7 @@ export default function AdminLayout({
     <div className="overflow-auto flex flex-col gap-5 w-full bg-base-100 relative">
       <AdminNavbar />
 
-      <div className="h-full flex flex-col space-y-10 m-5">
+      <div className="h-full flex flex-col space-y-10">
         {children}
       </div>
       

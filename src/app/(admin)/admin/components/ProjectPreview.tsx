@@ -3,11 +3,22 @@ import { ProjectFormData } from "../hook/useProjectForm"
 import ProjectLink from "@/src/components/ProjectLink"
 import Section from "@/src/components/Section"
 import { TechStackCard } from "@/src/components/TeckStack"
-import { technologies } from "@/src/lib/constants"
 import Gallery from "@/src/components/Gallery"
+import { useEffect, useState } from "react"
+import { fetchTechnologies } from "@/src/actions/tech.actions"
+import { TechStackItems } from "@/src/lib/constants"
 
 const ProjectPreview = ({ formData }: { formData: ProjectFormData }) => {
-  
+    const [ technologies, setTechnologies ] = useState<Record<string, TechStackItems>>({})
+    
+    useEffect(() => {
+        const getTechnologies = async () => {
+            const technologies = await fetchTechnologies();
+            setTechnologies(technologies);
+        };
+        getTechnologies();
+    }, []);
+
     return (
     <div className="flex-1 flex gap-10 p-5 lg:p-10 border border-base-content/20 bg-base-200 relative rounded-sm min-h-[80vh]">
         {/* BG Gradient */}

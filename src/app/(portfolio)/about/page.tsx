@@ -62,6 +62,11 @@ export default function AboutPage() {
                     {/* Quick Access */}
                     <TechStack 
                         className="xl:grid-cols-3! 2xl:grid-cols-5"
+                        technology={
+                            [
+                                "react","nextjs","tailwind","daisyui","nodejs","express","mongodb","mysql","zustand","socketio","python","tensorflow","github","vscode","figma"
+                            ]
+                        }
                     />
                 </div>
             </section>

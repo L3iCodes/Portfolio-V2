@@ -1,23 +1,23 @@
 import { Icon } from '@iconify/react'
-import { featuredStack, allStack } from "../lib/constants"
 import type { TechStackItems } from "../lib/constants"
+import { fetchTechnologies } from '../actions/tech.actions';
 
 interface TechStackProps {
-    option?: 'all' | 'featured'
+    technology: string[];
     className?: string;
 };
 
-const TechStack = ({option = "all", className}: TechStackProps) => {
-    const stackToRender = option === "all" ? Object.values(allStack) : Object.values(featuredStack);
+const TechStack = async ({technology, className}: TechStackProps) => {
+    const technologies = await fetchTechnologies();
 
     return(
         <div className={`${className} w-full grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5`}>
-            {stackToRender.map((stack) => (
+            {technology.map((tech, index) => (
                 <TechStackCard
-                    key={stack.name}
-                    name={stack.name}
-                    icon={stack.icon}
-                    color={stack.color}
+                    key={`${index}-${technologies[tech].key}`}
+                    name={technologies[tech].name}
+                    icon={technologies[tech].icon}
+                    color={technologies[tech].color}
                 />
             ))}
         </div>
@@ -25,7 +25,6 @@ const TechStack = ({option = "all", className}: TechStackProps) => {
 };
 
 export default TechStack;
-
 
 export const TechStackCard = ({name, icon, color, className}: TechStackItems & { className?: string }) => {
     return(

@@ -8,7 +8,7 @@ import { profileImage } from "../../lib/constants";
 
 export default function HomePage() {
   return (
-    <div className={`min-h-full space-y-30 m-5 md:m-10 xl:m-15`}>
+    <div className={`space-y-30 m-5 md:m-10 xl:m-15`}>
       {/* Introduction Section*/}
       <section className="flex flex-col md:flex-row gap-30">
         <div className="space-y-15">
@@ -23,7 +23,7 @@ export default function HomePage() {
           <div className="space-y-5">
             <h1 className="text-sm text-base-content/80 font-bricolage font-semibold ">MY MAIN STACK</h1>
             <div className="flex">
-              <TechStack option="featured"/>
+              <TechStack technology={['react', 'nextjs', 'nodejs', 'express', 'mongodb', 'mysql', 'vscode', 'figma', 'zustand', ]}/>
             </div>
           </div>
 

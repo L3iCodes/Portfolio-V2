@@ -1,10 +1,9 @@
 import { fetchProjectbyId } from "@/src/actions/project.actions";
-import { NavigateButton } from "@/src/components/Button";
+import { fetchTechnologies } from "@/src/actions/tech.actions";
 import Gallery from "@/src/components/Gallery";
 import ProjectLink from "@/src/components/ProjectLink";
 import Section, { SectionNavigation } from "@/src/components/Section";
 import { TechStackCard } from "@/src/components/TeckStack";
-import { technologies } from "@/src/lib/constants";
 import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/lib/styles";
 
 type ProjectInfoParams = {
@@ -14,6 +13,7 @@ type ProjectInfoParams = {
 export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
     const { id } = await params;
     const project = await fetchProjectbyId(id);
+    const technologies = await fetchTechnologies();
 
     return(
         <div className={`min-h-screen flex gap-10 p-5 lg:p-10 relative`}>
@@ -77,20 +77,16 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
                     {/* Overview Section */}
                     <Section name="STACK">
                         <ul className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6  gap-4">
-                            {project.technologies.map((tech, index) => {
-                                const item = technologies[tech.toLowerCase()];
-
-                                return(
-                                    <li key={`teck-${index}`}>
-                                        <TechStackCard
-                                            name={item.name}
-                                            icon={item.icon}
-                                            color={item.color}
-                                            className={`flex-col`}
-                                        />
-                                    </li>
-                                );
-                            })}
+                            {project.technologies.map((tech, index) => (
+                                <li key={`${index}-${tech}`}>
+                                   <TechStackCard 
+                                        name={technologies[tech].name}
+                                        icon={technologies[tech].icon}
+                                        color={technologies[tech].color}
+                                        className={`flex-col`}
+                                   /> 
+                                </li>
+                            ))}
                         </ul>
                     </Section>
 
