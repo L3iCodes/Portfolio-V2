@@ -217,7 +217,6 @@ const ProjectInfoForm = ({
                     onChange={handleChange}
                     placeholder="https://link.com/.."
                     value={formData.link}
-                    required={true}
                 />
             </InputGroup>
 
