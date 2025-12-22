@@ -45,7 +45,7 @@ export default function AboutPage() {
                 
                 <div className="hidden xl:flex gap-2 justify-center">
                     <div className="shrink-0 w-[300px] bg-base-100 rounded-md">
-                        Image here
+                        
                     </div>
                 </div>
 
