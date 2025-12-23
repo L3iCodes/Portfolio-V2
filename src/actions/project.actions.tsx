@@ -3,6 +3,7 @@
 import { cache } from "react";
 import Project, { ProjectType } from "../models/Projects";
 import { ProjectFormData } from "../app/(admin)/admin/hook/useProjectForm";
+import mongoose from "mongoose";
 
 export async function fetchProject(): Promise<ProjectType[]> {
     try{
@@ -15,18 +16,23 @@ export async function fetchProject(): Promise<ProjectType[]> {
         })) as ProjectType[];
 
     }catch(error){
-        throw new Error(`Something went wrong while fetching the projects`)
+        console.error("DB error:", error);
+        throw error;
     };
 };
 
-export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType> => {
+export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType | null> => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return null;
+    }
+
     try {
         const data = await Project.findById(id).lean();
         return JSON.parse(JSON.stringify(data));
 
     } catch (error) {
-        console.error(error);
-        throw new Error("Something went wrong while fetching the project");
+        console.error("DB error:", error);
+        throw error;
     };
 });
 

@@ -18,14 +18,14 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, colorTheme, href }: Proje
       onClick={() => (redirect(`${href}/${_id}`))}
       className={
         `
-          h-[400px] min-w-[250px] w-[250px] md:w-full p-2 flex flex-col gap-1 bg-base-200 border border-base-content/20 rounded-md cursor-pointer
+          h-[400px] min-w-[220px] w-[250px] md:w-full p-2 flex flex-col gap-2 bg-base-200 border border-base-content/20 rounded-md cursor-pointer
           transition-all ease-in
           hover:scale-105 hover:bg-base-100
         `
       }
     >
       {/* Cover Image */}
-      <div className="border border-base-content/20 h-[80%] rounded-xs relative"> 
+      <div className="border border-base-content/20 h-[85%] rounded-xs relative"> 
         {/* Gradient Background */}
         <div className="absolute inset-0 z-0" style={{background: projectCoverStyles[colorTheme]}}
         />
@@ -40,9 +40,9 @@ const ProjectCard = ({ _id, title, subtitle, coverImg, colorTheme, href }: Proje
         )}
       </div>
 
-      <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-xs text-base-content/60">{subtitle}</p>
+      <div className="h-[15%] flex flex-col justify-center">
+        <h2 className="text-md font-semibold">{title}</h2>
+        <p className="text-xs text-base-content/60 line-clamp-2">{subtitle}</p>
       </div>
     </div>
   );

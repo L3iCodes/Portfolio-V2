@@ -34,7 +34,7 @@ export default function AboutPage() {
                     <ImageHolder 
                         src={profileImage} 
                         className="shrink-0 w-[300px] h-[400px]"
-                        title="Wildlife.jpg"
+                        title="(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧"
                     />
                     <div className="mt-auto w-10 h-15 bg-base-100 border border-base-content/20 rounded-md"/>
                 </div>

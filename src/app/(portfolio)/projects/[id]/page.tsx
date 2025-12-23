@@ -5,6 +5,7 @@ import ProjectLink from "@/src/components/ProjectLink";
 import Section, { SectionNavigation } from "@/src/components/Section";
 import { TechStackCard } from "@/src/components/TeckStack";
 import { pageBackgroundEffects, projectCoverStyles, shadowColors } from "@/src/lib/styles";
+import { notFound } from "next/navigation";
 
 type ProjectInfoParams = {
     params: Promise<{ id: string }>
@@ -14,6 +15,10 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
     const { id } = await params;
     const project = await fetchProjectbyId(id);
     const technologies = await fetchTechnologies();
+
+    if (!project) {
+        notFound(); // 👈 shows nearest not-found.tsx
+    }
 
     return(
         <div className={`min-h-screen flex gap-10 p-5 lg:p-10 relative`}>

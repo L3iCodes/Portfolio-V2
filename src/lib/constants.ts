@@ -47,8 +47,8 @@ type QuickAccessItems = {
 export const quickAccess: QuickAccessItems[] = [
     {icon: "ri:github-fill", withStyle: true, href: "https://github.com/L3iCodes"},
     {icon: "mdi:linkedin", withStyle: true, href: "https://www.linkedin.com/in/jan-wilhelm-sy-8665b9379"},
-    {text: "Email", withStyle: true, customStyle: "px-5!"},
-    {text: "(+69) 961 365 5723", withStyle: false, customStyle: "hover:bg-base-200"},
+    {icon: "line-md:email", text: "Email", withStyle: true, customStyle: "flex gap-2 px-3!"},
+    {icon: "line-md:clipboard", text: "Resume", withStyle: true, customStyle: "flex gap-2 px-3!"},
 ];
 
 // ========= EXPERIENCES ITEM(S)

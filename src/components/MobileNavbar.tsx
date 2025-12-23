@@ -36,12 +36,20 @@ const MobileNavbar = () => {
                 <Icon icon="stash:burger-classic" width="24" height="24" />
             </div>
 
+            {openNav && (
+                <div 
+                    className="absolute w-screen h-screen top-0 left-0 bg-transparent"
+                    onClick={() => setOpenNav(false)}
+                >
+                </div>
+            )}
+
             <SideNavbar
                 onNavigate={() => setOpenNav(false)}
                 className={
                     `
                     flex! fixed top-0 bg-base-100 border border-base-content/20 h-screen
-                    transition-all ease-in-out duration-300
+                    transition-all ease-in-out duration-300 pt-4
                     ${openNav ? "right-0" : "-right-100"}
                     `
                 }

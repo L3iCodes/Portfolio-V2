@@ -350,10 +350,10 @@ const ProjectInfoForm = ({
             <div className="w-full flex gap-2">
                 {mode === 'edit' &&  (
                     <button 
-                    type="button"
-                    className="ml-auto px-2 py-2 text-sm border border-base-content/20 bg-amber-950 hover:bg-amber-900 disabled:opacity-90 disabled:bg-base-300 cursor-pointer"
-                    disabled={isSubmitting}
-                    onClick={() => handleDelete()}
+                        type="button"
+                        className="ml-auto px-2 py-2 text-sm border border-base-content/20 bg-amber-950 hover:bg-amber-900 disabled:opacity-90 disabled:bg-base-300 cursor-pointer"
+                        disabled={isSubmitting}
+                        onClick={() => handleDelete()}
                 >
                     {isSubmitting 
                         ? "Deleting"
