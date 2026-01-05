@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import DesktopNavbar from "../components/SideNavbar";
-import MobileNavbar from "../components/MobileNavbar";
-import SideNavbar from "../components/SideNavbar";
-import { dbConnect } from "../lib/db";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,8 +15,11 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
+  title: "Wilhelm",
   description: "Portfolio Description",
+  icons:{
+    icon: '/icon.png'
+  }
 };
 
 export default function RootLayout({
@@ -28,7 +27,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  dbConnect();
   return (
     <html data-theme="dark" lang="en">
       <body

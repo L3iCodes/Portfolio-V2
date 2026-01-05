@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { projectCoverColors } from "@/src/lib/styles";
-import { featuredStack } from "@/src/lib/constants";
 
 export interface Feature {
   name: string;

@@ -28,33 +28,36 @@ export default function EditProjectPage() {
     useEffect(() => {
         const fetchData = async () => {
             const projectData = await fetchProjectbyId(id);
-            setFormData({
-                title: projectData.title,
-                subtitle: projectData.subtitle,
-                colorTheme: projectData.colorTheme,
-                coverImg: projectData.coverImg,
-                github: projectData.github,
-                link: projectData.link || "",
-                overview: projectData.overview,
-                features: projectData.features,
-                technologies: projectData.technologies,
-                gallery: projectData.gallery,
-                featured: projectData.featured
-            })
+            if(projectData){
+                setFormData({
+                    title: projectData.title,
+                    subtitle: projectData.subtitle,
+                    colorTheme: projectData.colorTheme,
+                    coverImg: projectData.coverImg,
+                    github: projectData.github,
+                    link: projectData.link || "",
+                    overview: projectData.overview,
+                    features: projectData.features,
+                    technologies: projectData.technologies,
+                    gallery: projectData.gallery,
+                    featured: projectData.featured
+                })
 
-            setOriginalData({
-                title: projectData.title,
-                subtitle: projectData.subtitle,
-                colorTheme: projectData.colorTheme,
-                coverImg: projectData.coverImg,
-                github: projectData.github,
-                link: projectData.link || "",
-                overview: projectData.overview,
-                features: projectData.features,
-                technologies: projectData.technologies,
-                gallery: projectData.gallery,
-                featured: projectData.featured
-            })
+                setOriginalData({
+                    title: projectData.title,
+                    subtitle: projectData.subtitle,
+                    colorTheme: projectData.colorTheme,
+                    coverImg: projectData.coverImg,
+                    github: projectData.github,
+                    link: projectData.link || "",
+                    overview: projectData.overview,
+                    features: projectData.features,
+                    technologies: projectData.technologies,
+                    gallery: projectData.gallery,
+                    featured: projectData.featured
+                })
+            }
+            
         }
         fetchData();
     }, [id])

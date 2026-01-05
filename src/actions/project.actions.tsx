@@ -4,8 +4,11 @@ import { cache } from "react";
 import Project, { ProjectType } from "../models/Projects";
 import { ProjectFormData } from "../app/(admin)/admin/hook/useProjectForm";
 import mongoose from "mongoose";
+import { dbConnect } from "../lib/db";
 
 export async function fetchProject(): Promise<ProjectType[]> {
+    await dbConnect();
+    
     try{
         // (.lean()) Return JSON Object
         const data = await Project.find({}).lean();
@@ -22,6 +25,8 @@ export async function fetchProject(): Promise<ProjectType[]> {
 };
 
 export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType | null> => {
+    await dbConnect();
+    
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return null;
     }
@@ -38,6 +43,8 @@ export const fetchProjectbyId = cache(async (id: string): Promise<ProjectType | 
 
 
 export const addProject = async (dataForm: ProjectFormData): Promise<void> => {
+    await dbConnect();
+
     try{
         await Project.create({
             title: dataForm.title,
@@ -59,6 +66,8 @@ export const addProject = async (dataForm: ProjectFormData): Promise<void> => {
 };
 
 export const editProject = async (id:string, dataForm:ProjectFormData): Promise<void> => {
+    await dbConnect();
+    
     try{
         const data =  await Project.findByIdAndUpdate(
             id,
@@ -86,6 +95,8 @@ export const editProject = async (id:string, dataForm:ProjectFormData): Promise<
 };
 
 export const deleteProject = async (id:string): Promise<void> => {
+    await dbConnect();
+    
     try{
         await Project.findByIdAndDelete(id);
 
