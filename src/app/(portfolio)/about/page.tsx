@@ -16,11 +16,9 @@ export default function AboutPage() {
                     <div className="space-y-5">
                         <h1 className="text-4xl font-bold">ME!</h1>
                         <p className="text-sm text-base-content/70">
-                            Hi, I’m <span className="font-semibold text-base-content">Jan Wilhelm Sy</span>, a Computer Science graduate from Bicol University with a strong drive to become a full-stack developer. 
-                            I’m passionate about web development (and artificial intelligence), 
-                            and I’m actively expanding my skills in React and various React-based frameworks, along with other backend technologies.
+                            Hi, I’m <span className="font-semibold text-base-content">Jan Wilhelm Sy</span>, Hi, I’m Jan Wilhelm Sy. I am a Full Stack Developer specializing in React, Next.js, and Node.js.
                             <br/><br/>
-                            My experience includes hands-on work with deep learning and natural language processing, both through research and applied projects.
+                            I recently graduated Cum Laude from Bicol University with a degree in Computer Science. While my academic background is rooted in AI and Deep Learning research, I channel that rigorous problem-solving mindset into building clean, scalable web applications. I am currently focused on shipping products and mastering the modern JavaScript ecosystem.
                         </p>
                     </div>
 
@@ -53,9 +51,7 @@ export default function AboutPage() {
                     <div className="space-y-5">
                         <h2 className="text-xl text-base-content/80 font-bold font-bricolage">MY TECH STACK</h2>
                         <p className="text-sm text-base-content/70">
-                            I specialize in building responsive, user-focused web applications using JavaScript, React, and modern React frameworks. 
-                            I also work with Node.js, Express, and various backend tools. 
-                            On the AI side, I have experience with Python, deep learning libraries, and NLP toolkits.
+                            Specializing in responsive web applications using React, Next.js, and Node.js. My background also includes technical experience with Python, Deep Learning, and NLP.
                         </p>
                     </div>
 

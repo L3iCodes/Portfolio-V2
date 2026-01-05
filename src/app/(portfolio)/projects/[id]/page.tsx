@@ -97,9 +97,12 @@ export default async function ProjectInfoPage({ params }: ProjectInfoParams ) {
 
                     
                     {/* Gallery */}
-                    <Section name={'GALLERY'}>
-                        <Gallery images={project.gallery} colors={project.colorTheme} />
-                    </Section>
+                    {project.gallery && project.gallery.length > 0 && (
+                        <Section name={'GALLERY'}>
+                            <Gallery images={project.gallery} colors={project.colorTheme} />
+                        </Section>
+                    )}
+                    
                     
                     <Section name={'LINKS'}>
                         <ProjectLink github={project.github} link={project.link}/>

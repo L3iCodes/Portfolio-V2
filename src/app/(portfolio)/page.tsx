@@ -15,7 +15,7 @@ export default function HomePage() {
           <div className="space-y-5">
             <h1 className="text-4xl font-bold">Hey, I'm Wilhelm!</h1>
             <p className="text-sm text-base-content/70 font-medium">
-              Fresh graduate and aspiring full-stack developer with skills in React, backend technologies, and AI. Experience includes deep learning and NLP projects developed during research and applied work.
+              Full Stack Developer specializing in React, Next.js, and Node.js. I combine clean code practices with a rigorous problem-solving approach derived from my background in CS research and AI.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export default function HomePage() {
             
             <div className="space-y-0">
               <h1 className="text-xl font-semibold font-bricolage ">MY PROJECTS</h1>
-              <p className="text-sm text-base-content/50">Collection of personal projects of web applications</p>
+              <p className="text-sm text-base-content/50">Modern web experiments and builds.</p>
             </div>
 
             <NavigateButton 
