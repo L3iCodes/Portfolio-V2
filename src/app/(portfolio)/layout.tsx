@@ -16,7 +16,7 @@ export default function PortfolioLayout({
 
         {/* Main Content */}
         <main className={
-          `w-full bg-base-200 rounded-md overflow-auto relative pb-10 sm:pb-3 md:pb-0`}>
+          `w-full bg-base-200 rounded-md overflow-auto relative`}>
           {children}
         </main>
       </>
