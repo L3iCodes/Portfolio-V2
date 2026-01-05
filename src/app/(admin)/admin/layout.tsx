@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import AdminNavbar from "./components/AdminNavbar";
+import { redirect } from "next/navigation";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,8 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  if(process.env.DEVELOPMENT_STAGE === 'deployed') redirect('/')
+
   return (
     <div className="overflow-auto flex flex-col gap-5 w-full bg-base-100 relative">
       <AdminNavbar />

@@ -77,12 +77,12 @@ export default function AboutPage() {
                     title="EXPERIENCE"
                     subtitle="Applied skills and contributions in the field."
                 >
-                    <Button 
+                    {/* <Button 
                         text="Resume"
                         type="rectangle"
                         className="ml-auto xl:ml-0!"
                         icon="bxs:right-arrow"
-                    />
+                    /> */}
                 </SectionHeader>
                 <Experiences/>
             </section>

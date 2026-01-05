@@ -36,19 +36,20 @@ export type TechStackItems = {
 };
 
 // ========= QUICK ACCESS ITEMS
-type QuickAccessItems = {
+export type QuickAccessItems = {
     text?: string;
     icon?: string;
     customStyle?: string;
     href?: string;
     withStyle: boolean;
+    value?: string;
 };
 
 export const quickAccess: QuickAccessItems[] = [
     {icon: "ri:github-fill", withStyle: true, href: "https://github.com/L3iCodes"},
     {icon: "mdi:linkedin", withStyle: true, href: "https://www.linkedin.com/in/jan-wilhelm-sy-8665b9379"},
-    {icon: "line-md:email", text: "Email", withStyle: true, customStyle: "flex gap-2 px-3!"},
-    {icon: "line-md:clipboard", text: "Resume", withStyle: true, customStyle: "flex gap-2 px-3!"},
+    {icon: "line-md:email", text: "Email", withStyle: true, href: "mailto:janwilhelmtan.sy@example.com", customStyle: "flex gap-2 px-3!", value: "janwilhelmtan.sy@example.com"},
+    {icon: "line-md:clipboard", text: "Resume", withStyle: true, href: process.env.NEXT_PUBLIC_RESUME_LINK, customStyle: "flex gap-2 px-3!"},
 ];
 
 // ========= EXPERIENCES ITEM(S)

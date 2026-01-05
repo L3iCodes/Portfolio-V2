@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react"
 import { usePathname } from "next/navigation"
 import { navigation, socials } from "../lib/constants"
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Profile from "./img/Profile.jpg";
 
 interface DesktopNavbarProps {
     className?: string;
@@ -24,8 +26,18 @@ const SideNavbar = ({ className, onNavigate }: DesktopNavbarProps) => {
                     hover:bg-base-200 hover:border-base-content/20
                     `
                 }
+                onClick={() => router.push('/about')}
             >
-                <div className="w-10 h-10 ring-0 bg-base-content rounded-full "/>
+                <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-base-content/20">
+                    <Image
+                        src={Profile}
+                        alt="Profile Picture"
+                        fill
+                        className="object-cover" 
+                        priority 
+                    />
+                </div>
+
                 <div className="">
                     <h1 className="text-sm font-semibold font-bricolage">Jan Wilhelm Sy</h1>
                     <p className="text-xs font-light">Full Stack Developer</p>
