@@ -33,7 +33,7 @@ export default function RootLayout({
         className={
           `${inter.variable} ${bricolage.variable} 
           antialiased flex flex-col gap-0 md:flex-row 
-          md:gap-5 h-screen lg:gap-10 
+          md:gap-5 h-dvh lg:gap-10 
           p-2 md:p-5 lg:p-10 relative bg-base-100
           overflow-hidden
           `
