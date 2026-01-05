@@ -15,7 +15,8 @@ export default function PortfolioLayout({
         <MobileNavbar />
 
         {/* Main Content */}
-        <main className={`w-full bg-base-200 rounded-md overflow-auto relative`}>
+        <main className={
+          `w-full bg-base-200 rounded-md overflow-auto relative pb-10 sm:pb-3 md:pb-0`}>
           {children}
         </main>
       </>
