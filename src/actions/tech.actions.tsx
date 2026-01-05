@@ -1,8 +1,11 @@
 'use server';
 
+import { dbConnect } from "../lib/db";
 import Tech, { TechProps } from "../models/Techs";
 
 export const fetchTechnologies = async () => {
+    await dbConnect();
+    
     try{
         // (.lean()) Return JSON Object
         const data = await Tech.find({}).lean();
@@ -23,6 +26,8 @@ export const fetchTechnologies = async () => {
 };
 
 export const addTechnology = async (dataForm: TechProps) => {
+    await dbConnect();
+
     try{
         await Tech.create({
             key: dataForm.name
@@ -40,6 +45,8 @@ export const addTechnology = async (dataForm: TechProps) => {
 }
 
 export const editTechnology = async (dataForm: TechProps) => {
+    await dbConnect();
+
     try{
         await Tech.findByIdAndUpdate(
             dataForm.id,
@@ -63,6 +70,8 @@ export const editTechnology = async (dataForm: TechProps) => {
 }
 
 export const deleteTechnology = async (id: string) => {
+    await dbConnect();
+    
     try{
         await Tech.findByIdAndDelete(id);
     }catch(error){

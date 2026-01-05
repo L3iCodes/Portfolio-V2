@@ -11,7 +11,7 @@ const TechStack = async ({technology, className}: TechStackProps) => {
     const technologies = await fetchTechnologies();
 
     return(
-        <div className={`${className} w-full grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5`}>
+        <div className={`${className} w-full grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5`}>
             {technology.map((tech, index) => (
                 <TechStackCard
                     key={`${index}-${technologies[tech].key}`}

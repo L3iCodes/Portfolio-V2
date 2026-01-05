@@ -22,9 +22,9 @@ export default function HomePage() {
           {/* TechStack */}
           <div className="space-y-5">
             <h1 className="text-sm text-base-content/80 font-bricolage font-semibold ">MY MAIN STACK</h1>
-            <div className="flex">
+            
               <TechStack technology={['react', 'nextjs', 'nodejs', 'express', 'mongodb', 'mysql', 'vscode', 'figma' ]}/>
-            </div>
+            
           </div>
 
           {/* Quick Access (Personal Info) */}
@@ -46,7 +46,7 @@ export default function HomePage() {
             </div>
             
             <div className="space-y-0">
-              <h1 className="text-xl font-semibold font-bricolage ">MY PROJECTS</h1>
+              <a href="/projects" className="text-xl font-semibold font-bricolage ">MY PROJECTS</a>
               <p className="text-sm text-base-content/50">Modern web experiments and builds.</p>
             </div>
 
@@ -58,12 +58,12 @@ export default function HomePage() {
               href="/projects"
             />
 
-            <NavigateButton 
+            {/* <NavigateButton 
               type="square"
               icon="bxs:right-arrow"
               className="lg:hidden"
               href="/projects"
-            />
+            /> */}
           </div>
 
           <Projects option="featured" href="/projects"/>
