@@ -23,7 +23,7 @@ export default function HomePage() {
           <div className="space-y-5">
             <h1 className="text-sm text-base-content/80 font-bricolage font-semibold ">MY MAIN STACK</h1>
             
-              <TechStack technology={['react', 'nextjs', 'nodejs', 'express', 'mongodb', 'mysql', 'vscode', 'figma' ]}/>
+              <TechStack technology={['laravel', 'vuejs', 'react', 'nodejs', 'express', 'mongodb', 'mysql', 'vscode', 'figma' ]}/>
             
           </div>
 

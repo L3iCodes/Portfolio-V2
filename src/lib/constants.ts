@@ -75,6 +75,16 @@ export const experiences: ExperienceItems[] = [
             'Built a responsive UI with Streamlit and containerized the application using Docker.',
         ]
     },
+    {
+        company: 'RDMB: Bicol University',
+        location: 'Legazpi City, Albay, Philippines',
+        role: 'Full Stack Developer',
+        date: 'January 2026 - Ongoing',
+        desc: 'Continued the implementation of RDESys: Integrated Bank System, a research and proposal submission and monitoring system.',
+        contributions: [
+            'Improved and implemented additional features that helps optimized the monitoring and submission workflow of researches under the university.',
+        ]
+    },
 ];
 
 
